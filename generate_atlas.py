@@ -46,10 +46,10 @@ def find_csv_file():
     Find the CSV file in the current directory.
     Tries to find any CSV file first, then falls back to data.csv
     """
-    csv_files = [f for f in os.listdir('.') if f.endswith('.csv')]
+    csv_files = sorted([f for f in os.listdir('.') if f.endswith('.csv')])
     
     if csv_files:
-        # Use the first CSV file found
+        # Use the first CSV file found (sorted for deterministic behavior)
         csv_file = csv_files[0]
         print(f"Found CSV file: {csv_file}")
         return csv_file
@@ -126,12 +126,17 @@ def read_and_process_csv(csv_file):
     print(f"Total records: {len(df)}")
     
     # Extract relevant columns
-    # Column indices: 2=Title, 4=Author/Editor, 9=City, 10=Publisher
+    # Try to find columns by matching keywords in column names
+    title_col = next((col for col in df.columns if 'Title' in str(col) or '題名' in str(col)), df.columns[2] if len(df.columns) > 2 else None)
+    author_col = next((col for col in df.columns if 'Author' in str(col) or '著者' in str(col)), df.columns[4] if len(df.columns) > 4 else None)
+    city_col = next((col for col in df.columns if 'City' in str(col) or '城市' in str(col)), df.columns[9] if len(df.columns) > 9 else None)
+    publisher_col = next((col for col in df.columns if 'Publisher' in str(col) or '出版' in str(col)), df.columns[10] if len(df.columns) > 10 else None)
+    
     columns_to_keep = {
-        df.columns[2]: 'Title',
-        df.columns[4]: 'Author',
-        df.columns[9]: 'City',
-        df.columns[10]: 'Publisher',
+        title_col: 'Title',
+        author_col: 'Author',
+        city_col: 'City',
+        publisher_col: 'Publisher',
     }
     
     df_processed = df.rename(columns=columns_to_keep)[['Title', 'Author', 'City', 'Publisher']].copy()
@@ -194,7 +199,7 @@ def create_map(df):
             location=[row['Latitude'], row['Longitude']],
             popup=folium.Popup(popup_html, max_width=300),
             tooltip=row['Title'][:50] + ('...' if len(row['Title']) > 50 else ''),
-            icon=folium.Icon(color='blue', icon='book', prefix='fa')
+            icon=folium.Icon(color='blue', icon='info-sign')
         ).add_to(marker_cluster)
     
     # Create heatmap data
