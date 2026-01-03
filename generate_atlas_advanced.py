@@ -45,12 +45,20 @@ CITY_COORDINATES = {
     '燕湖': (39.9042, 116.4074),
 }
 
-# Library geocoding dictionary
+# Library geocoding dictionary - Enhanced with Japanese institutions
 LIBRARY_COORDINATES = {
-    'New York Public Library': (40.7532, -73.9822),
-    'Tōyō Bunko': (35.7339, 139.7544),  # Tokyo
-    'Tenri University Library': (34.5970, 135.8376),  # Nara
+    # Japanese libraries (primary collections)
+    '天理大學': (34.5970, 135.8376),  # Tenri University, Nara
+    '天理大學圖書館': (34.5970, 135.8376),
+    'Tenri University': (34.5970, 135.8376),
+    '大阪大學': (34.8218, 135.5228),  # Osaka University
     'Osaka University': (34.8218, 135.5228),
+    '龍谷大學': (34.9807, 135.7556),  # Ryukoku University, Kyoto
+    'Ryukoku University': (34.9807, 135.7556),
+    '東洋文庫': (35.7339, 139.7544),  # Tōyō Bunko, Tokyo
+    'Tōyō Bunko': (35.7339, 139.7544),
+    # Western libraries
+    'New York Public Library': (40.7532, -73.9822),
     'Harvard-Yenching Library': (42.3770, -71.1167),
     'British Library': (51.5299, -0.1271),
     'Bibliothèque nationale de France': (48.8338, 2.3765),
@@ -150,7 +158,7 @@ def geocode_city(city_name):
 
 
 def geocode_library(library_name):
-    """Get coordinates for a library."""
+    """Get coordinates for a library - enhanced for Japanese institutions."""
     if not library_name or pd.isna(library_name):
         return None
     
@@ -160,7 +168,19 @@ def geocode_library(library_name):
     if library_name in LIBRARY_COORDINATES:
         return LIBRARY_COORDINATES[library_name]
     
-    # Try fuzzy match
+    # Japanese library fuzzy matching - check for key institutions
+    japanese_institutions = {
+        '天理': (34.5970, 135.8376),  # Tenri University
+        '大阪': (34.8218, 135.5228),  # Osaka University
+        '龍谷': (34.9807, 135.7556),  # Ryukoku University
+        '東洋文庫': (35.7339, 139.7544),  # Tōyō Bunko
+    }
+    
+    for keyword, coords in japanese_institutions.items():
+        if keyword in library_name:
+            return coords
+    
+    # Try fuzzy match with Western libraries
     for lib_key, coords in LIBRARY_COORDINATES.items():
         if lib_key.lower() in library_name.lower() or library_name.lower() in lib_key.lower():
             return coords
@@ -326,11 +346,11 @@ def create_temporal_map(df, output_file='temporal_map.html'):
 
 def create_network_map(df, output_file='network_map.html'):
     """
-    Create publisher-to-library network visualization.
-    Feature #2: Publisher-to-Library Network
+    Create publisher-to-library network visualization showing China→Japan book migration.
+    Feature #2: Publisher-to-Library Network - "The Book Road"
     """
     print(f"\n{'='*60}")
-    print("Creating Publisher-to-Library Network")
+    print("Creating Publisher-to-Library Network (China→Japan)")
     print(f"{'='*60}")
     
     df_network = df[(df['Coordinates'].notna()) & (df['Library_Coords'].notna())].copy()
@@ -339,12 +359,17 @@ def create_network_map(df, output_file='network_map.html'):
         print("⚠️  No records with both publisher and library locations - skipping network map")
         return None
     
-    center_lat = 35.0  # Centered between China and global libraries
-    center_lon = 100.0
+    # Analyze Japanese vs other collections
+    japanese_books = df_network[df_network['Library'].str.contains('天理|大阪|龍谷|東洋', na=False)]
+    print(f"  Books in Japanese libraries: {len(japanese_books)}")
+    print(f"  Books in other libraries: {len(df_network) - len(japanese_books)}")
     
-    m = folium.Map(location=[center_lat, center_lon], zoom_start=3)
+    center_lat = 35.0  # Centered between China and Japan
+    center_lon = 115.0
     
-    # Add origin markers (publishers)
+    m = folium.Map(location=[center_lat, center_lon], zoom_start=4)
+    
+    # Add origin markers (Chinese publishing cities)
     for city in df_network['City_Clean'].unique():
         city_data = df_network[df_network['City_Clean'] == city]
         lat, lon = city_data.iloc[0]['Latitude'], city_data.iloc[0]['Longitude']
@@ -352,56 +377,101 @@ def create_network_map(df, output_file='network_map.html'):
         
         folium.CircleMarker(
             location=[lat, lon],
-            radius=5 + count * 0.5,
-            popup=f"<b>{city}</b><br>{count} books published",
-            color='blue',
+            radius=8 + count * 0.3,
+            popup=f"<b>{city} (Publishing City)</b><br>{count} books published<br>Now preserved in Japanese collections",
+            tooltip=f"{city}: {count} books",
+            color='#0066cc',
             fill=True,
-            fillColor='blue',
-            fillOpacity=0.6
+            fillColor='#0066cc',
+            fillOpacity=0.7,
+            weight=2
         ).add_to(m)
     
-    # Add destination markers (libraries) and flow lines
-    for idx, row in df_network.iterrows():
-        # Draw flow line
-        folium.PolyLine(
-            locations=[
-                [row['Latitude'], row['Longitude']],
-                [row['Library_Lat'], row['Library_Lon']]
-            ],
-            color='red',
-            weight=1,
-            opacity=0.3
-        ).add_to(m)
-    
-    # Add library markers
+    # Group flow lines by library to reduce clutter
+    library_flows = {}
     for library in df_network['Library'].unique():
         lib_data = df_network[df_network['Library'] == library]
         if lib_data.iloc[0]['Library_Coords']:
             lat, lon = lib_data.iloc[0]['Library_Lat'], lib_data.iloc[0]['Library_Lon']
-            count = len(lib_data)
+            library_flows[library] = {
+                'coords': (lat, lon),
+                'count': len(lib_data),
+                'cities': lib_data['City_Clean'].tolist()
+            }
+    
+    # Draw flow lines from each city to each library
+    flow_count = {}
+    for idx, row in df_network.iterrows():
+        flow_key = f"{row['City_Clean']}→{row['Library'][:10]}"
+        flow_count[flow_key] = flow_count.get(flow_key, 0) + 1
+    
+    # Draw aggregated flow lines
+    drawn_flows = set()
+    for idx, row in df_network.iterrows():
+        flow_key = (row['City_Clean'], row['Library'])
+        if flow_key not in drawn_flows:
+            drawn_flows.add(flow_key)
+            count = sum(1 for i, r in df_network.iterrows() if r['City_Clean'] == row['City_Clean'] and r['Library'] == row['Library'])
             
-            folium.Marker(
-                location=[lat, lon],
-                popup=f"<b>{library}</b><br>{count} books preserved",
-                icon=folium.Icon(color='green', icon='book', prefix='fa')
+            # Color based on destination (red for Japan, orange for others)
+            is_japan = any(keyword in str(row['Library']) for keyword in ['天理', '大阪', '龍谷', '東洋'])
+            line_color = '#cc0000' if is_japan else '#ff9900'
+            line_opacity = min(0.2 + count * 0.05, 0.8)
+            line_weight = max(1, min(count * 0.3, 4))
+            
+            folium.PolyLine(
+                locations=[
+                    [row['Latitude'], row['Longitude']],
+                    [row['Library_Lat'], row['Library_Lon']]
+                ],
+                color=line_color,
+                weight=line_weight,
+                opacity=line_opacity,
+                popup=f"{row['City_Clean']} → {row['Library'][:30]}<br>{count} books"
             ).add_to(m)
     
-    # Add title
+    # Add library markers (destinations)
+    for library, data in library_flows.items():
+        lat, lon = data['coords']
+        count = data['count']
+        
+        # Determine if Japanese library
+        is_japan = any(keyword in library for keyword in ['天理', '大阪', '龍谷', '東洋'])
+        icon_color = 'red' if is_japan else 'green'
+        lib_type = "🇯🇵 Japanese" if is_japan else "🌍 International"
+        
+        # Clean library name for display
+        lib_display = library[:40] + ('...' if len(library) > 40 else '')
+        
+        folium.Marker(
+            location=[lat, lon],
+            popup=f"<b>{lib_display}</b><br>{lib_type} Library<br><b>{count} books</b> preserved<br>From: {', '.join(set(data['cities'][:5]))}{'...' if len(set(data['cities'])) > 5 else ''}",
+            tooltip=f"{lib_display}: {count} books",
+            icon=folium.Icon(color=icon_color, icon='book', prefix='fa')
+        ).add_to(m)
+    
+    # Enhanced title
     title_html = '''
-    <div style="position: fixed; top: 10px; left: 50px; width: 600px; height: 90px; 
+    <div style="position: fixed; top: 10px; left: 50px; width: 650px; height: 120px; 
                 background-color: white; border:2px solid grey; z-index:9999; 
-                font-size:16px; padding: 10px; opacity: 0.9;">
-        <h3 style="margin: 0;">Publisher-to-Library Network</h3>
-        <p style="margin: 5px 0;">Blue: Publishing cities | Green: Libraries | Red lines: Book flows</p>
+                font-size:15px; padding: 10px; opacity: 0.95;">
+        <h3 style="margin: 0;">The "Book Road": China → Japan Migration</h3>
+        <p style="margin: 5px 0; font-size: 13px;">
+        🔵 Blue circles: Chinese publishing cities | 
+        🔴 Red markers: Japanese libraries | 
+        🟢 Green: Other libraries<br>
+        Red lines: Books flowing to Japan | Orange: Other destinations
+        </p>
     </div>
     '''
     m.get_root().html.add_child(folium.Element(title_html))
     
     m.save(output_file)
     print(f"✓ Saved: {output_file}")
-    print(f"  Publisher cities: {df_network['City_Clean'].nunique()}")
-    print(f"  Libraries: {df_network['Library'].nunique()}")
-    print(f"  Total flows: {len(df_network)}")
+    print(f"  Chinese publisher cities: {df_network['City_Clean'].nunique()}")
+    print(f"  Total libraries: {len(library_flows)}")
+    print(f"  Japanese libraries: {sum(1 for lib in library_flows if any(k in lib for k in ['天理', '大阪', '龍谷', '東洋']))}")
+    print(f"  Total book flows visualized: {len(df_network)}")
     
     return m
 

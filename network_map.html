@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_e4514abe362532767c457bd0f505e818 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed; top: 10px; left: 50px; width: 650px; height: 120px; 
+                background-color: white; border:2px solid grey; z-index:9999; 
+                font-size:15px; padding: 10px; opacity: 0.95;">
+        <h3 style="margin: 0;">The "Book Road": China → Japan Migration</h3>
+        <p style="margin: 5px 0; font-size: 13px;">
+        🔵 Blue circles: Chinese publishing cities | 
+        🔴 Red markers: Japanese libraries | 
+        🟢 Green: Other libraries<br>
+        Red lines: Books flowing to Japan | Orange: Other destinations
+        </p>
+    </div>
+    
+    
+            <div class="folium-map" id="map_e4514abe362532767c457bd0f505e818" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_e4514abe362532767c457bd0f505e818 = L.map(
+                "map_e4514abe362532767c457bd0f505e818",
+                {
+                    center: [35.0, 115.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 4,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_0f0d1fb4f49d0ad582333f51bc29a59a = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_0f0d1fb4f49d0ad582333f51bc29a59a.addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+            var circle_marker_04d6064611c0d3027420ca6c0c6df3e0 = L.circleMarker(
+                [39.9042, 116.4074],
+                {"bubblingMouseEvents": true, "color": "#0066cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0066cc", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 44.3, "stroke": true, "weight": 2}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_7e449b696694c2e1a2d5812372f116a8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1e36707ccd0c61cace1af9c04135e748 = $(`<div id="html_1e36707ccd0c61cace1af9c04135e748" style="width: 100.0%; height: 100.0%;"><b>北京 (Publishing City)</b><br>121 books published<br>Now preserved in Japanese collections</div>`)[0];
+                popup_7e449b696694c2e1a2d5812372f116a8.setContent(html_1e36707ccd0c61cace1af9c04135e748);
+            
+        
+
+        circle_marker_04d6064611c0d3027420ca6c0c6df3e0.bindPopup(popup_7e449b696694c2e1a2d5812372f116a8)
+        ;
+
+        
+    
+    
+            circle_marker_04d6064611c0d3027420ca6c0c6df3e0.bindTooltip(
+                `<div>
+                     北京: 121 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_07cfcf29a20b1cb9341986ad7de217bd = L.circleMarker(
+                [25.0406, 102.7125],
+                {"bubblingMouseEvents": true, "color": "#0066cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0066cc", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.5, "stroke": true, "weight": 2}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_a41e4455e970c17d856502d94b37eea5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f181818c057d70a3a43fbcdcb57eb9c1 = $(`<div id="html_f181818c057d70a3a43fbcdcb57eb9c1" style="width: 100.0%; height: 100.0%;"><b>雲南 (Publishing City)</b><br>5 books published<br>Now preserved in Japanese collections</div>`)[0];
+                popup_a41e4455e970c17d856502d94b37eea5.setContent(html_f181818c057d70a3a43fbcdcb57eb9c1);
+            
+        
+
+        circle_marker_07cfcf29a20b1cb9341986ad7de217bd.bindPopup(popup_a41e4455e970c17d856502d94b37eea5)
+        ;
+
+        
+    
+    
+            circle_marker_07cfcf29a20b1cb9341986ad7de217bd.bindTooltip(
+                `<div>
+                     雲南: 5 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3bd298a41f7d532534c78497a0b8fbe8 = L.circleMarker(
+                [30.5728, 104.0668],
+                {"bubblingMouseEvents": true, "color": "#0066cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0066cc", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.3, "stroke": true, "weight": 2}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_81504d0cec81c9f13d076d59513c519a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_015fbdd7ead875bfe45109f214dec890 = $(`<div id="html_015fbdd7ead875bfe45109f214dec890" style="width: 100.0%; height: 100.0%;"><b>成都 (Publishing City)</b><br>11 books published<br>Now preserved in Japanese collections</div>`)[0];
+                popup_81504d0cec81c9f13d076d59513c519a.setContent(html_015fbdd7ead875bfe45109f214dec890);
+            
+        
+
+        circle_marker_3bd298a41f7d532534c78497a0b8fbe8.bindPopup(popup_81504d0cec81c9f13d076d59513c519a)
+        ;
+
+        
+    
+    
+            circle_marker_3bd298a41f7d532534c78497a0b8fbe8.bindTooltip(
+                `<div>
+                     成都: 11 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_92a831eec873714410b146be8466a2a7 = L.circleMarker(
+                [36.2988, 102.9883],
+                {"bubblingMouseEvents": true, "color": "#0066cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0066cc", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.3, "stroke": true, "weight": 2}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_3fba8e32ee8fbdce929c464491ada5e8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_db9e4c06ab433af37f63d6862085ec54 = $(`<div id="html_db9e4c06ab433af37f63d6862085ec54" style="width: 100.0%; height: 100.0%;"><b>導河 (Publishing City)</b><br>1 books published<br>Now preserved in Japanese collections</div>`)[0];
+                popup_3fba8e32ee8fbdce929c464491ada5e8.setContent(html_db9e4c06ab433af37f63d6862085ec54);
+            
+        
+
+        circle_marker_92a831eec873714410b146be8466a2a7.bindPopup(popup_3fba8e32ee8fbdce929c464491ada5e8)
+        ;
+
+        
+    
+    
+            circle_marker_92a831eec873714410b146be8466a2a7.bindTooltip(
+                `<div>
+                     導河: 1 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e60b056ee83550da029d37d6d541a19b = L.circleMarker(
+                [32.0603, 118.7969],
+                {"bubblingMouseEvents": true, "color": "#0066cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0066cc", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.8, "stroke": true, "weight": 2}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_bdab2c824d0245482606b045f48ac3a5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5b4b1b1f9af8e3c38ddebb2f6671fe77 = $(`<div id="html_5b4b1b1f9af8e3c38ddebb2f6671fe77" style="width: 100.0%; height: 100.0%;"><b>南京 (Publishing City)</b><br>6 books published<br>Now preserved in Japanese collections</div>`)[0];
+                popup_bdab2c824d0245482606b045f48ac3a5.setContent(html_5b4b1b1f9af8e3c38ddebb2f6671fe77);
+            
+        
+
+        circle_marker_e60b056ee83550da029d37d6d541a19b.bindPopup(popup_bdab2c824d0245482606b045f48ac3a5)
+        ;
+
+        
+    
+    
+            circle_marker_e60b056ee83550da029d37d6d541a19b.bindTooltip(
+                `<div>
+                     南京: 6 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_37f85162a462453a1e1c4184f08300a3 = L.circleMarker(
+                [31.2304, 121.4737],
+                {"bubblingMouseEvents": true, "color": "#0066cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0066cc", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.7, "stroke": true, "weight": 2}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_bfeef654a63266f289840f0900bf7bf8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fb9acd5631d3797f0197d9c9990805dd = $(`<div id="html_fb9acd5631d3797f0197d9c9990805dd" style="width: 100.0%; height: 100.0%;"><b>上海 (Publishing City)</b><br>9 books published<br>Now preserved in Japanese collections</div>`)[0];
+                popup_bfeef654a63266f289840f0900bf7bf8.setContent(html_fb9acd5631d3797f0197d9c9990805dd);
+            
+        
+
+        circle_marker_37f85162a462453a1e1c4184f08300a3.bindPopup(popup_bfeef654a63266f289840f0900bf7bf8)
+        ;
+
+        
+    
+    
+            circle_marker_37f85162a462453a1e1c4184f08300a3.bindTooltip(
+                `<div>
+                     上海: 9 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4482afcc96f6c6c763256105d3a4be89 = L.circleMarker(
+                [39.3434, 117.3616],
+                {"bubblingMouseEvents": true, "color": "#0066cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0066cc", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.3, "stroke": true, "weight": 2}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_dc2cfab5aa0839fb2181c6f6560ea500 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b5c3f691bfcf92cd867f79172bbff70b = $(`<div id="html_b5c3f691bfcf92cd867f79172bbff70b" style="width: 100.0%; height: 100.0%;"><b>天津 (Publishing City)</b><br>11 books published<br>Now preserved in Japanese collections</div>`)[0];
+                popup_dc2cfab5aa0839fb2181c6f6560ea500.setContent(html_b5c3f691bfcf92cd867f79172bbff70b);
+            
+        
+
+        circle_marker_4482afcc96f6c6c763256105d3a4be89.bindPopup(popup_dc2cfab5aa0839fb2181c6f6560ea500)
+        ;
+
+        
+    
+    
+            circle_marker_4482afcc96f6c6c763256105d3a4be89.bindTooltip(
+                `<div>
+                     天津: 11 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d8aef7e5193cb017c2ad964a30bdf15b = L.circleMarker(
+                [28.2282, 112.9388],
+                {"bubblingMouseEvents": true, "color": "#0066cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0066cc", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.4, "stroke": true, "weight": 2}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_8dd5fe40c87a28df5f206169d134a078 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4d1c2d4a859484b159ed995ff9d98947 = $(`<div id="html_4d1c2d4a859484b159ed995ff9d98947" style="width: 100.0%; height: 100.0%;"><b>長沙 (Publishing City)</b><br>8 books published<br>Now preserved in Japanese collections</div>`)[0];
+                popup_8dd5fe40c87a28df5f206169d134a078.setContent(html_4d1c2d4a859484b159ed995ff9d98947);
+            
+        
+
+        circle_marker_d8aef7e5193cb017c2ad964a30bdf15b.bindPopup(popup_8dd5fe40c87a28df5f206169d134a078)
+        ;
+
+        
+    
+    
+            circle_marker_d8aef7e5193cb017c2ad964a30bdf15b.bindTooltip(
+                `<div>
+                     長沙: 8 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ccb3672aea7e1bed1fcb7e604de8c2e6 = L.circleMarker(
+                [32.2109, 119.4552],
+                {"bubblingMouseEvents": true, "color": "#0066cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0066cc", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.8, "stroke": true, "weight": 2}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_8aa67f5ca4f5636146f8152a2ac5804c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d1c83bdb3a51788095b10285659af534 = $(`<div id="html_d1c83bdb3a51788095b10285659af534" style="width: 100.0%; height: 100.0%;"><b>鎮江 (Publishing City)</b><br>6 books published<br>Now preserved in Japanese collections</div>`)[0];
+                popup_8aa67f5ca4f5636146f8152a2ac5804c.setContent(html_d1c83bdb3a51788095b10285659af534);
+            
+        
+
+        circle_marker_ccb3672aea7e1bed1fcb7e604de8c2e6.bindPopup(popup_8aa67f5ca4f5636146f8152a2ac5804c)
+        ;
+
+        
+    
+    
+            circle_marker_ccb3672aea7e1bed1fcb7e604de8c2e6.bindTooltip(
+                `<div>
+                     鎮江: 6 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_95895c986be4cdac45dea78d9220ed1c = L.circleMarker(
+                [41.8057, 123.4328],
+                {"bubblingMouseEvents": true, "color": "#0066cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0066cc", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.2, "stroke": true, "weight": 2}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_5130b61842ecc6d60e65be287e8240c7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cd5771fb93f5890502bfb21f9b880775 = $(`<div id="html_cd5771fb93f5890502bfb21f9b880775" style="width: 100.0%; height: 100.0%;"><b>瀋陽 (Publishing City)</b><br>4 books published<br>Now preserved in Japanese collections</div>`)[0];
+                popup_5130b61842ecc6d60e65be287e8240c7.setContent(html_cd5771fb93f5890502bfb21f9b880775);
+            
+        
+
+        circle_marker_95895c986be4cdac45dea78d9220ed1c.bindPopup(popup_5130b61842ecc6d60e65be287e8240c7)
+        ;
+
+        
+    
+    
+            circle_marker_95895c986be4cdac45dea78d9220ed1c.bindTooltip(
+                `<div>
+                     瀋陽: 4 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_49b1296dfff3323fb62232695853d579 = L.circleMarker(
+                [23.1291, 113.2644],
+                {"bubblingMouseEvents": true, "color": "#0066cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0066cc", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.6, "stroke": true, "weight": 2}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_a4e6dd88d972dddb4c3bc446bab3004d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6accc12676d5b5f4e46ecd0d5f5d5132 = $(`<div id="html_6accc12676d5b5f4e46ecd0d5f5d5132" style="width: 100.0%; height: 100.0%;"><b>廣州 (Publishing City)</b><br>2 books published<br>Now preserved in Japanese collections</div>`)[0];
+                popup_a4e6dd88d972dddb4c3bc446bab3004d.setContent(html_6accc12676d5b5f4e46ecd0d5f5d5132);
+            
+        
+
+        circle_marker_49b1296dfff3323fb62232695853d579.bindPopup(popup_a4e6dd88d972dddb4c3bc446bab3004d)
+        ;
+
+        
+    
+    
+            circle_marker_49b1296dfff3323fb62232695853d579.bindTooltip(
+                `<div>
+                     廣州: 2 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0979307079355d42642fea15232af918 = L.circleMarker(
+                [22.3193, 114.1694],
+                {"bubblingMouseEvents": true, "color": "#0066cc", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0066cc", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.3, "stroke": true, "weight": 2}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_4b49b5edf4f0fec9e05d49c6ffa8fa2e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dfc17ef08a47429e84f1c5d263e0256a = $(`<div id="html_dfc17ef08a47429e84f1c5d263e0256a" style="width: 100.0%; height: 100.0%;"><b>香港 (Publishing City)</b><br>1 books published<br>Now preserved in Japanese collections</div>`)[0];
+                popup_4b49b5edf4f0fec9e05d49c6ffa8fa2e.setContent(html_dfc17ef08a47429e84f1c5d263e0256a);
+            
+        
+
+        circle_marker_0979307079355d42642fea15232af918.bindPopup(popup_4b49b5edf4f0fec9e05d49c6ffa8fa2e)
+        ;
+
+        
+    
+    
+            circle_marker_0979307079355d42642fea15232af918.bindTooltip(
+                `<div>
+                     香港: 1 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_1ab156155934d86c108a2d372b4f547a = L.polyline(
+                [[39.9042, 116.4074], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_c76bc7ce811011a838cdd9f4ce731cbb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_65765d934430de4d5613ca18ef14fa7b = $(`<div id="html_65765d934430de4d5613ca18ef14fa7b" style="width: 100.0%; height: 100.0%;">北京 → 天理大學圖書館東館書庫5F<br>49 books</div>`)[0];
+                popup_c76bc7ce811011a838cdd9f4ce731cbb.setContent(html_65765d934430de4d5613ca18ef14fa7b);
+            
+        
+
+        poly_line_1ab156155934d86c108a2d372b4f547a.bindPopup(popup_c76bc7ce811011a838cdd9f4ce731cbb)
+        ;
+
+        
+    
+    
+            var poly_line_32f1a9836888ab73b3d581f41fe12f19 = L.polyline(
+                [[25.0406, 102.7125], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.4, "smoothFactor": 1.0, "stroke": true, "weight": 1.2}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_d54f6f6e4e8b212848776fa461667c4b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_08bfba9f76c36ee48d52472dd2f2b132 = $(`<div id="html_08bfba9f76c36ee48d52472dd2f2b132" style="width: 100.0%; height: 100.0%;">雲南 → 天理大學<br>4 books</div>`)[0];
+                popup_d54f6f6e4e8b212848776fa461667c4b.setContent(html_08bfba9f76c36ee48d52472dd2f2b132);
+            
+        
+
+        poly_line_32f1a9836888ab73b3d581f41fe12f19.bindPopup(popup_d54f6f6e4e8b212848776fa461667c4b)
+        ;
+
+        
+    
+    
+            var poly_line_c48546a7a44296a991bb628e001a39ed = L.polyline(
+                [[39.9042, 116.4074], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6000000000000001, "smoothFactor": 1.0, "stroke": true, "weight": 2.4}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_fccea819684f53c5ceb29a9c1d84234a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_aeadaf4c67145b7c5b720b8ed3bdfb9f = $(`<div id="html_aeadaf4c67145b7c5b720b8ed3bdfb9f" style="width: 100.0%; height: 100.0%;">北京 → 天理大學<br>8 books</div>`)[0];
+                popup_fccea819684f53c5ceb29a9c1d84234a.setContent(html_aeadaf4c67145b7c5b720b8ed3bdfb9f);
+            
+        
+
+        poly_line_c48546a7a44296a991bb628e001a39ed.bindPopup(popup_fccea819684f53c5ceb29a9c1d84234a)
+        ;
+
+        
+    
+    
+            var poly_line_4941b712c061623548039c0e94409b3b = L.polyline(
+                [[39.9042, 116.4074], [34.8218, 135.5228]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.55, "smoothFactor": 1.0, "stroke": true, "weight": 2.1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_4bb0b22215acac68b5bc338c4da515a5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cd9078eef9a8ee0f524ca7c6369767c1 = $(`<div id="html_cd9078eef9a8ee0f524ca7c6369767c1" style="width: 100.0%; height: 100.0%;">北京 → 大阪大學<br>7 books</div>`)[0];
+                popup_4bb0b22215acac68b5bc338c4da515a5.setContent(html_cd9078eef9a8ee0f524ca7c6369767c1);
+            
+        
+
+        poly_line_4941b712c061623548039c0e94409b3b.bindPopup(popup_4bb0b22215acac68b5bc338c4da515a5)
+        ;
+
+        
+    
+    
+            var poly_line_050f24ac6699eb1f29b3e762cd766567 = L.polyline(
+                [[39.9042, 116.4074], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_6256bc731d37d275f72c091d4a989fb6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c237d5f8b79e760aa43b5e1ebf868647 = $(`<div id="html_c237d5f8b79e760aa43b5e1ebf868647" style="width: 100.0%; height: 100.0%;">北京 → 天理大學圖書館書庫<br>47 books</div>`)[0];
+                popup_6256bc731d37d275f72c091d4a989fb6.setContent(html_c237d5f8b79e760aa43b5e1ebf868647);
+            
+        
+
+        poly_line_050f24ac6699eb1f29b3e762cd766567.bindPopup(popup_6256bc731d37d275f72c091d4a989fb6)
+        ;
+
+        
+    
+    
+            var poly_line_808a4d63750bc1cd5633e433d2f8b8b8 = L.polyline(
+                [[30.5728, 104.0668], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6000000000000001, "smoothFactor": 1.0, "stroke": true, "weight": 2.4}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_9f69298588600e277d6a105a24474547 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_62c87331fa07b4ba8250209fdd35757f = $(`<div id="html_62c87331fa07b4ba8250209fdd35757f" style="width: 100.0%; height: 100.0%;">成都 → 天理大學<br>8 books</div>`)[0];
+                popup_9f69298588600e277d6a105a24474547.setContent(html_62c87331fa07b4ba8250209fdd35757f);
+            
+        
+
+        poly_line_808a4d63750bc1cd5633e433d2f8b8b8.bindPopup(popup_9f69298588600e277d6a105a24474547)
+        ;
+
+        
+    
+    
+            var poly_line_ce65aef4b3e3184db9d9b5b662646a0a = L.polyline(
+                [[39.9042, 116.4074], [34.9807, 135.7556]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.35000000000000003, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_340137b75079c1b69be413d64075e52a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b161761b098d4853c1a1167d85f8d98a = $(`<div id="html_b161761b098d4853c1a1167d85f8d98a" style="width: 100.0%; height: 100.0%;">北京 → 龍谷大學大宮·西黌B2閉架<br>3 books</div>`)[0];
+                popup_340137b75079c1b69be413d64075e52a.setContent(html_b161761b098d4853c1a1167d85f8d98a);
+            
+        
+
+        poly_line_ce65aef4b3e3184db9d9b5b662646a0a.bindPopup(popup_340137b75079c1b69be413d64075e52a)
+        ;
+
+        
+    
+    
+            var poly_line_4b049230c32d2ad86d2dc75e50343348 = L.polyline(
+                [[36.2988, 102.9883], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.25, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_ce782bfef7c99a3dea277ea2dc5c2e3d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b524f06b4c3d6e914079cafdfaf1c385 = $(`<div id="html_b524f06b4c3d6e914079cafdfaf1c385" style="width: 100.0%; height: 100.0%;">導河 → 天理大學<br>1 books</div>`)[0];
+                popup_ce782bfef7c99a3dea277ea2dc5c2e3d.setContent(html_b524f06b4c3d6e914079cafdfaf1c385);
+            
+        
+
+        poly_line_4b049230c32d2ad86d2dc75e50343348.bindPopup(popup_ce782bfef7c99a3dea277ea2dc5c2e3d)
+        ;
+
+        
+    
+    
+            var poly_line_6b70f360b3e3838564b0a844fcf41f3a = L.polyline(
+                [[32.0603, 118.7969], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.30000000000000004, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_e066b9efd2601b63deef66016093c2e7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_75b1061473f89e30f47ac1f4060abf4c = $(`<div id="html_75b1061473f89e30f47ac1f4060abf4c" style="width: 100.0%; height: 100.0%;">南京 → 天理大學圖書館東館書庫5F<br>2 books</div>`)[0];
+                popup_e066b9efd2601b63deef66016093c2e7.setContent(html_75b1061473f89e30f47ac1f4060abf4c);
+            
+        
+
+        poly_line_6b70f360b3e3838564b0a844fcf41f3a.bindPopup(popup_e066b9efd2601b63deef66016093c2e7)
+        ;
+
+        
+    
+    
+            var poly_line_cabe9e867b6b6fd4c658a747ec7eeeec = L.polyline(
+                [[31.2304, 121.4737], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.30000000000000004, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_7f5305d17fac6918e5673685d7fe2058 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_02d4499fe8c9b592ab07d30ef19fcb19 = $(`<div id="html_02d4499fe8c9b592ab07d30ef19fcb19" style="width: 100.0%; height: 100.0%;">上海 → 天理大學圖書館東館書庫5F<br>2 books</div>`)[0];
+                popup_7f5305d17fac6918e5673685d7fe2058.setContent(html_02d4499fe8c9b592ab07d30ef19fcb19);
+            
+        
+
+        poly_line_cabe9e867b6b6fd4c658a747ec7eeeec.bindPopup(popup_7f5305d17fac6918e5673685d7fe2058)
+        ;
+
+        
+    
+    
+            var poly_line_fc8cd1c2f48b083cfdfd7946213985cc = L.polyline(
+                [[31.2304, 121.4737], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "smoothFactor": 1.0, "stroke": true, "weight": 1.7999999999999998}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_4d46d045b86aaf72442399f4ce6480fd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_42f8b1ee2d0d57a5df1fbda1b2b027c1 = $(`<div id="html_42f8b1ee2d0d57a5df1fbda1b2b027c1" style="width: 100.0%; height: 100.0%;">上海 → 天理大學圖書館書庫<br>6 books</div>`)[0];
+                popup_4d46d045b86aaf72442399f4ce6480fd.setContent(html_42f8b1ee2d0d57a5df1fbda1b2b027c1);
+            
+        
+
+        poly_line_fc8cd1c2f48b083cfdfd7946213985cc.bindPopup(popup_4d46d045b86aaf72442399f4ce6480fd)
+        ;
+
+        
+    
+    
+            var poly_line_804cf8493b93c5ec3ba11e8d88b48da7 = L.polyline(
+                [[39.3434, 117.3616], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.45, "smoothFactor": 1.0, "stroke": true, "weight": 1.5}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_0bcd889fdfd3472bb96b5a561794e311 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0bee0f348b7255f444c7f35fae66f0fe = $(`<div id="html_0bee0f348b7255f444c7f35fae66f0fe" style="width: 100.0%; height: 100.0%;">天津 → 天理大學圖書館東館書庫5F<br>5 books</div>`)[0];
+                popup_0bcd889fdfd3472bb96b5a561794e311.setContent(html_0bee0f348b7255f444c7f35fae66f0fe);
+            
+        
+
+        poly_line_804cf8493b93c5ec3ba11e8d88b48da7.bindPopup(popup_0bcd889fdfd3472bb96b5a561794e311)
+        ;
+
+        
+    
+    
+            var poly_line_70e3b2657cd5eec60c6946f40c6dd5fc = L.polyline(
+                [[39.9042, 116.4074], [34.8218, 135.5228]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.4, "smoothFactor": 1.0, "stroke": true, "weight": 1.2}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_18ccb1bd67de4628176410a0c0984acb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3189d4b1b4ca3e68e1f2f787dc9adb68 = $(`<div id="html_3189d4b1b4ca3e68e1f2f787dc9adb68" style="width: 100.0%; height: 100.0%;">北京 → 大阪大學外國圖1層書庫漢籍<br>4 books</div>`)[0];
+                popup_18ccb1bd67de4628176410a0c0984acb.setContent(html_3189d4b1b4ca3e68e1f2f787dc9adb68);
+            
+        
+
+        poly_line_70e3b2657cd5eec60c6946f40c6dd5fc.bindPopup(popup_18ccb1bd67de4628176410a0c0984acb)
+        ;
+
+        
+    
+    
+            var poly_line_516e2aff623dc6ee378fe813dc9387b4 = L.polyline(
+                [[28.2282, 112.9388], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.55, "smoothFactor": 1.0, "stroke": true, "weight": 2.1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_8403adb5fa86e7524dd6ca1945be221f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c2d9f1940271f7336b0854ea554fe460 = $(`<div id="html_c2d9f1940271f7336b0854ea554fe460" style="width: 100.0%; height: 100.0%;">長沙 → 天理大學圖書館書庫<br>7 books</div>`)[0];
+                popup_8403adb5fa86e7524dd6ca1945be221f.setContent(html_c2d9f1940271f7336b0854ea554fe460);
+            
+        
+
+        poly_line_516e2aff623dc6ee378fe813dc9387b4.bindPopup(popup_8403adb5fa86e7524dd6ca1945be221f)
+        ;
+
+        
+    
+    
+            var poly_line_5744133a029034cf36551967deb9f10e = L.polyline(
+                [[39.9042, 116.4074], [34.9807, 135.7556]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.25, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_2ab388a049867f094f64e1f1a7c055a4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_50792ebdaf52cc65fa3969158da8c127 = $(`<div id="html_50792ebdaf52cc65fa3969158da8c127" style="width: 100.0%; height: 100.0%;">北京 → 龍谷大學大宮·西黌B1<br>1 books</div>`)[0];
+                popup_2ab388a049867f094f64e1f1a7c055a4.setContent(html_50792ebdaf52cc65fa3969158da8c127);
+            
+        
+
+        poly_line_5744133a029034cf36551967deb9f10e.bindPopup(popup_2ab388a049867f094f64e1f1a7c055a4)
+        ;
+
+        
+    
+    
+            var poly_line_64d2cbf97880e3f9f84c573651e04f75 = L.polyline(
+                [[32.2109, 119.4552], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.35000000000000003, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_48ea9424e88680206ca8da486f82d01e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0d4e3631f6e4183df4073e52078305f6 = $(`<div id="html_0d4e3631f6e4183df4073e52078305f6" style="width: 100.0%; height: 100.0%;">鎮江 → 天理大學<br>3 books</div>`)[0];
+                popup_48ea9424e88680206ca8da486f82d01e.setContent(html_0d4e3631f6e4183df4073e52078305f6);
+            
+        
+
+        poly_line_64d2cbf97880e3f9f84c573651e04f75.bindPopup(popup_48ea9424e88680206ca8da486f82d01e)
+        ;
+
+        
+    
+    
+            var poly_line_d6fdabcb5887ed12e56293f2c49e34c3 = L.polyline(
+                [[41.8057, 123.4328], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.4, "smoothFactor": 1.0, "stroke": true, "weight": 1.2}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_8e5bedadf21cc8c7a981cca05750e8fa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f674ed532a8e8986efd6148f315a68a9 = $(`<div id="html_f674ed532a8e8986efd6148f315a68a9" style="width: 100.0%; height: 100.0%;">瀋陽 → 天理大學圖書館書庫<br>4 books</div>`)[0];
+                popup_8e5bedadf21cc8c7a981cca05750e8fa.setContent(html_f674ed532a8e8986efd6148f315a68a9);
+            
+        
+
+        poly_line_d6fdabcb5887ed12e56293f2c49e34c3.bindPopup(popup_8e5bedadf21cc8c7a981cca05750e8fa)
+        ;
+
+        
+    
+    
+            var poly_line_25b34790b8710ef66c042daddb3f0f3f = L.polyline(
+                [[30.5728, 104.0668], [34.8218, 135.5228]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.25, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_ffe2c98fefbd7c15613b390ff4b39b04 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2f4b6d8e39f691f7c8137b37e3aac8c3 = $(`<div id="html_2f4b6d8e39f691f7c8137b37e3aac8c3" style="width: 100.0%; height: 100.0%;">成都 → 大阪大學<br>1 books</div>`)[0];
+                popup_ffe2c98fefbd7c15613b390ff4b39b04.setContent(html_2f4b6d8e39f691f7c8137b37e3aac8c3);
+            
+        
+
+        poly_line_25b34790b8710ef66c042daddb3f0f3f.bindPopup(popup_ffe2c98fefbd7c15613b390ff4b39b04)
+        ;
+
+        
+    
+    
+            var poly_line_be484351b6812ed8953b5dfa83fe4492 = L.polyline(
+                [[32.0603, 118.7969], [34.8218, 135.5228]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.35000000000000003, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_629ccec9772b8a4a60309ec6dd80b929 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f1a72acd27c031a22563e5219d13fe64 = $(`<div id="html_f1a72acd27c031a22563e5219d13fe64" style="width: 100.0%; height: 100.0%;">南京 → 大阪大學<br>3 books</div>`)[0];
+                popup_629ccec9772b8a4a60309ec6dd80b929.setContent(html_f1a72acd27c031a22563e5219d13fe64);
+            
+        
+
+        poly_line_be484351b6812ed8953b5dfa83fe4492.bindPopup(popup_629ccec9772b8a4a60309ec6dd80b929)
+        ;
+
+        
+    
+    
+            var poly_line_09a57505fd0c278a597d5abea93e128b = L.polyline(
+                [[39.9042, 116.4074], [34.9807, 135.7556]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.25, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_974b872616e6ae3543e95661f6110bc3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bf65ec89fc528c436630fc567526d1e9 = $(`<div id="html_bf65ec89fc528c436630fc567526d1e9" style="width: 100.0%; height: 100.0%;">北京 → 龍谷大學大宮·西黌B1禁帶<br>1 books</div>`)[0];
+                popup_974b872616e6ae3543e95661f6110bc3.setContent(html_bf65ec89fc528c436630fc567526d1e9);
+            
+        
+
+        poly_line_09a57505fd0c278a597d5abea93e128b.bindPopup(popup_974b872616e6ae3543e95661f6110bc3)
+        ;
+
+        
+    
+    
+            var poly_line_cc6637f0c70023ea533dfb5c631c7399 = L.polyline(
+                [[23.1291, 113.2644], [34.9807, 135.7556]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.25, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_f8d2bea988de97361acf3e1b06f061fc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5cf933f669047a2f62b7892074a9fbfd = $(`<div id="html_5cf933f669047a2f62b7892074a9fbfd" style="width: 100.0%; height: 100.0%;">廣州 → 龍谷大學大宮·西黌B1<br>1 books</div>`)[0];
+                popup_f8d2bea988de97361acf3e1b06f061fc.setContent(html_5cf933f669047a2f62b7892074a9fbfd);
+            
+        
+
+        poly_line_cc6637f0c70023ea533dfb5c631c7399.bindPopup(popup_f8d2bea988de97361acf3e1b06f061fc)
+        ;
+
+        
+    
+    
+            var poly_line_8fecf1691c50a93a1d0da51ffdf8c7b1 = L.polyline(
+                [[39.3434, 117.3616], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.25, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_d5cdf867fd68ec4c21d2d156f82f4725 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_68f5a30b3a69cc13505fc1461badc185 = $(`<div id="html_68f5a30b3a69cc13505fc1461badc185" style="width: 100.0%; height: 100.0%;">天津 → 天理大學圖書館書庫<br>1 books</div>`)[0];
+                popup_d5cdf867fd68ec4c21d2d156f82f4725.setContent(html_68f5a30b3a69cc13505fc1461badc185);
+            
+        
+
+        poly_line_8fecf1691c50a93a1d0da51ffdf8c7b1.bindPopup(popup_d5cdf867fd68ec4c21d2d156f82f4725)
+        ;
+
+        
+    
+    
+            var poly_line_2e3b45c339987d277e38fe5d00d94df9 = L.polyline(
+                [[28.2282, 112.9388], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.25, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_68dfbd2aaa1cc9d022b7bdc6049b7391 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c0ffa5fd6ca7eabd72df37637ea4b3bd = $(`<div id="html_c0ffa5fd6ca7eabd72df37637ea4b3bd" style="width: 100.0%; height: 100.0%;">長沙 → 天理大學<br>1 books</div>`)[0];
+                popup_68dfbd2aaa1cc9d022b7bdc6049b7391.setContent(html_c0ffa5fd6ca7eabd72df37637ea4b3bd);
+            
+        
+
+        poly_line_2e3b45c339987d277e38fe5d00d94df9.bindPopup(popup_68dfbd2aaa1cc9d022b7bdc6049b7391)
+        ;
+
+        
+    
+    
+            var poly_line_9a82b8c4cba30f88ab42c7fd8c64787b = L.polyline(
+                [[39.3434, 117.3616], [34.8218, 135.5228]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.25, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_87236faa73ad7bcaba69c14e39cb5d7d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a8e46dd941b2706c317ebc551664b2aa = $(`<div id="html_a8e46dd941b2706c317ebc551664b2aa" style="width: 100.0%; height: 100.0%;">天津 → 大阪大學<br>1 books</div>`)[0];
+                popup_87236faa73ad7bcaba69c14e39cb5d7d.setContent(html_a8e46dd941b2706c317ebc551664b2aa);
+            
+        
+
+        poly_line_9a82b8c4cba30f88ab42c7fd8c64787b.bindPopup(popup_87236faa73ad7bcaba69c14e39cb5d7d)
+        ;
+
+        
+    
+    
+            var poly_line_9afaf67a1aec397e5898b7239ae71a15 = L.polyline(
+                [[32.0603, 118.7969], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.25, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_d27c6071f9c187e5b84a01e80bde1247 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2bebc60ec021d36f9a01399a5087ba86 = $(`<div id="html_2bebc60ec021d36f9a01399a5087ba86" style="width: 100.0%; height: 100.0%;">南京 → 天理大學圖書館書庫<br>1 books</div>`)[0];
+                popup_d27c6071f9c187e5b84a01e80bde1247.setContent(html_2bebc60ec021d36f9a01399a5087ba86);
+            
+        
+
+        poly_line_9afaf67a1aec397e5898b7239ae71a15.bindPopup(popup_d27c6071f9c187e5b84a01e80bde1247)
+        ;
+
+        
+    
+    
+            var poly_line_c83a59909e8b6ab0d4f51643ce54ec69 = L.polyline(
+                [[31.2304, 121.4737], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.25, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_56347934425a061e77f98e2882103ad8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_eb0cdd511fe23a591639596f51f58913 = $(`<div id="html_eb0cdd511fe23a591639596f51f58913" style="width: 100.0%; height: 100.0%;">上海 → 天理大學<br>1 books</div>`)[0];
+                popup_56347934425a061e77f98e2882103ad8.setContent(html_eb0cdd511fe23a591639596f51f58913);
+            
+        
+
+        poly_line_c83a59909e8b6ab0d4f51643ce54ec69.bindPopup(popup_56347934425a061e77f98e2882103ad8)
+        ;
+
+        
+    
+    
+            var poly_line_596b08b7f496f1b0cba48c947753dffd = L.polyline(
+                [[32.2109, 119.4552], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.25, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_e68d7d174534144976a4eeddc66c7e85 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4368c34ed6760d0943fd8529f27a1a38 = $(`<div id="html_4368c34ed6760d0943fd8529f27a1a38" style="width: 100.0%; height: 100.0%;">鎮江 → 天理大學圖書館東館書庫5F<br>1 books</div>`)[0];
+                popup_e68d7d174534144976a4eeddc66c7e85.setContent(html_4368c34ed6760d0943fd8529f27a1a38);
+            
+        
+
+        poly_line_596b08b7f496f1b0cba48c947753dffd.bindPopup(popup_e68d7d174534144976a4eeddc66c7e85)
+        ;
+
+        
+    
+    
+            var poly_line_e41e6e9136b83450fc222cd62f3eabdb = L.polyline(
+                [[30.5728, 104.0668], [34.9807, 135.7556]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.25, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_56ffb5b66c9289bfec1701d9a8b084c1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_96d92a1cb4780bde6b9cee9c5b4451a1 = $(`<div id="html_96d92a1cb4780bde6b9cee9c5b4451a1" style="width: 100.0%; height: 100.0%;">成都 → 龍谷大學大宮·西黌B1<br>1 books</div>`)[0];
+                popup_56ffb5b66c9289bfec1701d9a8b084c1.setContent(html_96d92a1cb4780bde6b9cee9c5b4451a1);
+            
+        
+
+        poly_line_e41e6e9136b83450fc222cd62f3eabdb.bindPopup(popup_56ffb5b66c9289bfec1701d9a8b084c1)
+        ;
+
+        
+    
+    
+            var poly_line_6b293ab8f1625e88db9a168e7aeb9f49 = L.polyline(
+                [[30.5728, 104.0668], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.25, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_1c8ace9608a24f24d6c085156c56fbbb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c5ccf1a668d6f3c28e88ea103830ae07 = $(`<div id="html_c5ccf1a668d6f3c28e88ea103830ae07" style="width: 100.0%; height: 100.0%;">成都 → 天理大學圖書館東館書庫5F<br>1 books</div>`)[0];
+                popup_1c8ace9608a24f24d6c085156c56fbbb.setContent(html_c5ccf1a668d6f3c28e88ea103830ae07);
+            
+        
+
+        poly_line_6b293ab8f1625e88db9a168e7aeb9f49.bindPopup(popup_1c8ace9608a24f24d6c085156c56fbbb)
+        ;
+
+        
+    
+    
+            var poly_line_0a7eac5964a747bcfba9588cc09e79a0 = L.polyline(
+                [[39.3434, 117.3616], [34.9807, 135.7556]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.25, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_a3dc9b892d5b25fece923fd4d0e9a21c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_10ac865076cd184c53fcb59f0cdfd0a1 = $(`<div id="html_10ac865076cd184c53fcb59f0cdfd0a1" style="width: 100.0%; height: 100.0%;">天津 → 龍谷大學大宮·西黌B1禁帶<br>1 books</div>`)[0];
+                popup_a3dc9b892d5b25fece923fd4d0e9a21c.setContent(html_10ac865076cd184c53fcb59f0cdfd0a1);
+            
+        
+
+        poly_line_0a7eac5964a747bcfba9588cc09e79a0.bindPopup(popup_a3dc9b892d5b25fece923fd4d0e9a21c)
+        ;
+
+        
+    
+    
+            var poly_line_126d2f7a49029db28625cc2c36960145 = L.polyline(
+                [[39.3434, 117.3616], [34.9807, 135.7556]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.30000000000000004, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_2a138516f1c58cdccd647d54bbdf204c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3bfb0b905ffb7d9efd32344988ca0e98 = $(`<div id="html_3bfb0b905ffb7d9efd32344988ca0e98" style="width: 100.0%; height: 100.0%;">天津 → 龍谷大學大宮·西黌B2禁帶<br>2 books</div>`)[0];
+                popup_2a138516f1c58cdccd647d54bbdf204c.setContent(html_3bfb0b905ffb7d9efd32344988ca0e98);
+            
+        
+
+        poly_line_126d2f7a49029db28625cc2c36960145.bindPopup(popup_2a138516f1c58cdccd647d54bbdf204c)
+        ;
+
+        
+    
+    
+            var poly_line_b5d2860e94f3a1409a8e02c82dcab176 = L.polyline(
+                [[39.9042, 116.4074], [34.8218, 135.5228]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.25, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_d3aa33d3314f6c39f0bdeb2474b6839b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_46639bba6c0255dc35f26cf265ae258b = $(`<div id="html_46639bba6c0255dc35f26cf265ae258b" style="width: 100.0%; height: 100.0%;">北京 → 大阪大學外國圖1層書庫舊分類<br>1 books</div>`)[0];
+                popup_d3aa33d3314f6c39f0bdeb2474b6839b.setContent(html_46639bba6c0255dc35f26cf265ae258b);
+            
+        
+
+        poly_line_b5d2860e94f3a1409a8e02c82dcab176.bindPopup(popup_d3aa33d3314f6c39f0bdeb2474b6839b)
+        ;
+
+        
+    
+    
+            var poly_line_5395a503da151b3050a58bfc4d24a81b = L.polyline(
+                [[23.1291, 113.2644], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.25, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_e358be7d51084c52f354a1fa98b3bfca = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4961dc7f2a21efd8a8789481d8a8fb13 = $(`<div id="html_4961dc7f2a21efd8a8789481d8a8fb13" style="width: 100.0%; height: 100.0%;">廣州 → 天理大學<br>1 books</div>`)[0];
+                popup_e358be7d51084c52f354a1fa98b3bfca.setContent(html_4961dc7f2a21efd8a8789481d8a8fb13);
+            
+        
+
+        poly_line_5395a503da151b3050a58bfc4d24a81b.bindPopup(popup_e358be7d51084c52f354a1fa98b3bfca)
+        ;
+
+        
+    
+    
+            var poly_line_b86faaca6d398587ae20600b6e970061 = L.polyline(
+                [[25.0406, 102.7125], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.25, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_6b4ad479eb8db60933d0a19563951457 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ec5bc70e3afc37a1558c6280e3421d76 = $(`<div id="html_ec5bc70e3afc37a1558c6280e3421d76" style="width: 100.0%; height: 100.0%;">雲南 → 天理大學圖書館書庫<br>1 books</div>`)[0];
+                popup_6b4ad479eb8db60933d0a19563951457.setContent(html_ec5bc70e3afc37a1558c6280e3421d76);
+            
+        
+
+        poly_line_b86faaca6d398587ae20600b6e970061.bindPopup(popup_6b4ad479eb8db60933d0a19563951457)
+        ;
+
+        
+    
+    
+            var poly_line_437708dff4799c886906e27c13595b70 = L.polyline(
+                [[32.2109, 119.4552], [34.8218, 135.5228]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.30000000000000004, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_ab5de8ea370d91408d82a4e6c4a8f180 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_904faee7b822d002cd0514df3459e163 = $(`<div id="html_904faee7b822d002cd0514df3459e163" style="width: 100.0%; height: 100.0%;">鎮江 → 大阪大學<br>2 books</div>`)[0];
+                popup_ab5de8ea370d91408d82a4e6c4a8f180.setContent(html_904faee7b822d002cd0514df3459e163);
+            
+        
+
+        poly_line_437708dff4799c886906e27c13595b70.bindPopup(popup_ab5de8ea370d91408d82a4e6c4a8f180)
+        ;
+
+        
+    
+    
+            var poly_line_ce1d74cbb46898050ffcf1d5bab2d70b = L.polyline(
+                [[22.3193, 114.1694], [34.597, 135.8376]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.25, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_1c9c944a20d960ce40c180deb10f4e76 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_bedc7a5afdf5b7e5ef326aaddc16d2c3 = $(`<div id="html_bedc7a5afdf5b7e5ef326aaddc16d2c3" style="width: 100.0%; height: 100.0%;">香港 → 天理大學圖書館書庫<br>1 books</div>`)[0];
+                popup_1c9c944a20d960ce40c180deb10f4e76.setContent(html_bedc7a5afdf5b7e5ef326aaddc16d2c3);
+            
+        
+
+        poly_line_ce1d74cbb46898050ffcf1d5bab2d70b.bindPopup(popup_1c9c944a20d960ce40c180deb10f4e76)
+        ;
+
+        
+    
+    
+            var poly_line_dda59dc87d70bc81ae5ddc99c0400f45 = L.polyline(
+                [[39.3434, 117.3616], [34.8218, 135.5228]],
+                {"bubblingMouseEvents": true, "color": "#cc0000", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#cc0000", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.25, "smoothFactor": 1.0, "stroke": true, "weight": 1}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+        var popup_5d8c4dcf0edcd4e01be6723761dcfcfb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_92e278ad06fe01eefc2e9e647ca0ba2e = $(`<div id="html_92e278ad06fe01eefc2e9e647ca0ba2e" style="width: 100.0%; height: 100.0%;">天津 → 大阪大學外國圖1層書庫漢籍<br>1 books</div>`)[0];
+                popup_5d8c4dcf0edcd4e01be6723761dcfcfb.setContent(html_92e278ad06fe01eefc2e9e647ca0ba2e);
+            
+        
+
+        poly_line_dda59dc87d70bc81ae5ddc99c0400f45.bindPopup(popup_5d8c4dcf0edcd4e01be6723761dcfcfb)
+        ;
+
+        
+    
+    
+            var marker_e0bff64a1c360ae7362c7524dda353bf = L.marker(
+                [34.597, 135.8376],
+                {
+}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+            var icon_1ae1cb9a84aee84cc96247825070f89d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "book",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cc1c2feecaca547e58a4bfbb453a8bf6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5afe963e31c9dbd9338f22319ae43d52 = $(`<div id="html_5afe963e31c9dbd9338f22319ae43d52" style="width: 100.0%; height: 100.0%;"><b>天理大學圖書館東館書庫5F</b><br>🇯🇵 Japanese Library<br><b>60 books</b> preserved<br>From: 上海, 北京, 南京...</div>`)[0];
+                popup_cc1c2feecaca547e58a4bfbb453a8bf6.setContent(html_5afe963e31c9dbd9338f22319ae43d52);
+            
+        
+
+        marker_e0bff64a1c360ae7362c7524dda353bf.bindPopup(popup_cc1c2feecaca547e58a4bfbb453a8bf6)
+        ;
+
+        
+    
+    
+            marker_e0bff64a1c360ae7362c7524dda353bf.bindTooltip(
+                `<div>
+                     天理大學圖書館東館書庫5F: 60 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e0bff64a1c360ae7362c7524dda353bf.setIcon(icon_1ae1cb9a84aee84cc96247825070f89d);
+            
+    
+            var marker_ef38e6cd20280c9dfa3b3833ce5f0728 = L.marker(
+                [34.597, 135.8376],
+                {
+}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+            var icon_f63b9de2422bad40e7f17e05890dd379 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "book",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_19e172971fc17d4a9a03ac545021c9ba = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_76957344b6b37a19106b19b50e2d46ca = $(`<div id="html_76957344b6b37a19106b19b50e2d46ca" style="width: 100.0%; height: 100.0%;"><b>天理大學</b><br>🇯🇵 Japanese Library<br><b>27 books</b> preserved<br>From: 北京, 導河, 成都, 雲南...</div>`)[0];
+                popup_19e172971fc17d4a9a03ac545021c9ba.setContent(html_76957344b6b37a19106b19b50e2d46ca);
+            
+        
+
+        marker_ef38e6cd20280c9dfa3b3833ce5f0728.bindPopup(popup_19e172971fc17d4a9a03ac545021c9ba)
+        ;
+
+        
+    
+    
+            marker_ef38e6cd20280c9dfa3b3833ce5f0728.bindTooltip(
+                `<div>
+                     天理大學: 27 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ef38e6cd20280c9dfa3b3833ce5f0728.setIcon(icon_f63b9de2422bad40e7f17e05890dd379);
+            
+    
+            var marker_4589172acee8bf697e0edd76c5213325 = L.marker(
+                [34.8218, 135.5228],
+                {
+}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+            var icon_9a7ee6ab6a59daa21b80dab91d45d41c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "book",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f02cde90e302e69323fdd83ebb73560b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d6139b78336d9d203ba618a97aa41f15 = $(`<div id="html_d6139b78336d9d203ba618a97aa41f15" style="width: 100.0%; height: 100.0%;"><b>大阪大學</b><br>🇯🇵 Japanese Library<br><b>14 books</b> preserved<br>From: 北京, 成都</div>`)[0];
+                popup_f02cde90e302e69323fdd83ebb73560b.setContent(html_d6139b78336d9d203ba618a97aa41f15);
+            
+        
+
+        marker_4589172acee8bf697e0edd76c5213325.bindPopup(popup_f02cde90e302e69323fdd83ebb73560b)
+        ;
+
+        
+    
+    
+            marker_4589172acee8bf697e0edd76c5213325.bindTooltip(
+                `<div>
+                     大阪大學: 14 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4589172acee8bf697e0edd76c5213325.setIcon(icon_9a7ee6ab6a59daa21b80dab91d45d41c);
+            
+    
+            var marker_3a3aaba7e47ebc5b307bd1fc6146b376 = L.marker(
+                [34.597, 135.8376],
+                {
+}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+            var icon_6515d2d065ca4f2a6e87a138e4c02a02 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "book",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7bc8c80f2655514e6753da6f5ed3ef14 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_15443127cb7bd4216dffb1cdfd145f91 = $(`<div id="html_15443127cb7bd4216dffb1cdfd145f91" style="width: 100.0%; height: 100.0%;"><b>天理大學圖書館書庫</b><br>🇯🇵 Japanese Library<br><b>68 books</b> preserved<br>From: 北京...</div>`)[0];
+                popup_7bc8c80f2655514e6753da6f5ed3ef14.setContent(html_15443127cb7bd4216dffb1cdfd145f91);
+            
+        
+
+        marker_3a3aaba7e47ebc5b307bd1fc6146b376.bindPopup(popup_7bc8c80f2655514e6753da6f5ed3ef14)
+        ;
+
+        
+    
+    
+            marker_3a3aaba7e47ebc5b307bd1fc6146b376.bindTooltip(
+                `<div>
+                     天理大學圖書館書庫: 68 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3a3aaba7e47ebc5b307bd1fc6146b376.setIcon(icon_6515d2d065ca4f2a6e87a138e4c02a02);
+            
+    
+            var marker_cfabd01f2cb94599c8306232bcda4b45 = L.marker(
+                [34.9807, 135.7556],
+                {
+}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+            var icon_09195f2a4256595ac41309594f6087b0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "book",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_91c42d4cbd283d5a5c56729ba982decc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_148ddfe00100145bd834a85cbb59358a = $(`<div id="html_148ddfe00100145bd834a85cbb59358a" style="width: 100.0%; height: 100.0%;"><b>龍谷大學大宮·西黌B2閉架</b><br>🇯🇵 Japanese Library<br><b>3 books</b> preserved<br>From: 北京</div>`)[0];
+                popup_91c42d4cbd283d5a5c56729ba982decc.setContent(html_148ddfe00100145bd834a85cbb59358a);
+            
+        
+
+        marker_cfabd01f2cb94599c8306232bcda4b45.bindPopup(popup_91c42d4cbd283d5a5c56729ba982decc)
+        ;
+
+        
+    
+    
+            marker_cfabd01f2cb94599c8306232bcda4b45.bindTooltip(
+                `<div>
+                     龍谷大學大宮·西黌B2閉架: 3 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cfabd01f2cb94599c8306232bcda4b45.setIcon(icon_09195f2a4256595ac41309594f6087b0);
+            
+    
+            var marker_2e2dbc3b1eb603772c84bc1f63154ad9 = L.marker(
+                [34.8218, 135.5228],
+                {
+}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+            var icon_edc9b02527391e35ea5f8034a583f487 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "book",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b3dee051765e10483ff7782abd9a770b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0094adb2e921dab4369be14eff42e4cf = $(`<div id="html_0094adb2e921dab4369be14eff42e4cf" style="width: 100.0%; height: 100.0%;"><b>大阪大學外國圖1層書庫漢籍</b><br>🇯🇵 Japanese Library<br><b>5 books</b> preserved<br>From: 北京, 天津</div>`)[0];
+                popup_b3dee051765e10483ff7782abd9a770b.setContent(html_0094adb2e921dab4369be14eff42e4cf);
+            
+        
+
+        marker_2e2dbc3b1eb603772c84bc1f63154ad9.bindPopup(popup_b3dee051765e10483ff7782abd9a770b)
+        ;
+
+        
+    
+    
+            marker_2e2dbc3b1eb603772c84bc1f63154ad9.bindTooltip(
+                `<div>
+                     大阪大學外國圖1層書庫漢籍: 5 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2e2dbc3b1eb603772c84bc1f63154ad9.setIcon(icon_edc9b02527391e35ea5f8034a583f487);
+            
+    
+            var marker_cef713c31ae0e56e3b26003ce6069ec5 = L.marker(
+                [34.9807, 135.7556],
+                {
+}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+            var icon_3f24f76cec26c28e61d7e96f5e93dc53 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "book",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d718672729386253a3ad1833b427b16c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_13673242970ce7389ec4d556b55fc7e2 = $(`<div id="html_13673242970ce7389ec4d556b55fc7e2" style="width: 100.0%; height: 100.0%;"><b>龍谷大學大宮·西黌B1</b><br>🇯🇵 Japanese Library<br><b>3 books</b> preserved<br>From: 北京, 成都, 廣州</div>`)[0];
+                popup_d718672729386253a3ad1833b427b16c.setContent(html_13673242970ce7389ec4d556b55fc7e2);
+            
+        
+
+        marker_cef713c31ae0e56e3b26003ce6069ec5.bindPopup(popup_d718672729386253a3ad1833b427b16c)
+        ;
+
+        
+    
+    
+            marker_cef713c31ae0e56e3b26003ce6069ec5.bindTooltip(
+                `<div>
+                     龍谷大學大宮·西黌B1: 3 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cef713c31ae0e56e3b26003ce6069ec5.setIcon(icon_3f24f76cec26c28e61d7e96f5e93dc53);
+            
+    
+            var marker_f5047ab1cc85559b8d946ee2054d6060 = L.marker(
+                [34.9807, 135.7556],
+                {
+}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+            var icon_a8d57f6d2e34d1e13c0df72fc44e4fb0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "book",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cd591feb675328062b2c0b3091504f72 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5b00336881d506da8c53593b3f5368c2 = $(`<div id="html_5b00336881d506da8c53593b3f5368c2" style="width: 100.0%; height: 100.0%;"><b>龍谷大學大宮·西黌B1禁帶</b><br>🇯🇵 Japanese Library<br><b>2 books</b> preserved<br>From: 北京, 天津</div>`)[0];
+                popup_cd591feb675328062b2c0b3091504f72.setContent(html_5b00336881d506da8c53593b3f5368c2);
+            
+        
+
+        marker_f5047ab1cc85559b8d946ee2054d6060.bindPopup(popup_cd591feb675328062b2c0b3091504f72)
+        ;
+
+        
+    
+    
+            marker_f5047ab1cc85559b8d946ee2054d6060.bindTooltip(
+                `<div>
+                     龍谷大學大宮·西黌B1禁帶: 2 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f5047ab1cc85559b8d946ee2054d6060.setIcon(icon_a8d57f6d2e34d1e13c0df72fc44e4fb0);
+            
+    
+            var marker_9f3c3b1ee6a7efe25a655140202e0fb1 = L.marker(
+                [34.9807, 135.7556],
+                {
+}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+            var icon_3433331242b6a1925e61ffed64aaeabb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "book",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6d0b0759757e1643bb5c3e9dafcdccd1 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_273c7ced41be62dfc5af69def29c704b = $(`<div id="html_273c7ced41be62dfc5af69def29c704b" style="width: 100.0%; height: 100.0%;"><b>龍谷大學大宮·西黌B2禁帶</b><br>🇯🇵 Japanese Library<br><b>2 books</b> preserved<br>From: 天津</div>`)[0];
+                popup_6d0b0759757e1643bb5c3e9dafcdccd1.setContent(html_273c7ced41be62dfc5af69def29c704b);
+            
+        
+
+        marker_9f3c3b1ee6a7efe25a655140202e0fb1.bindPopup(popup_6d0b0759757e1643bb5c3e9dafcdccd1)
+        ;
+
+        
+    
+    
+            marker_9f3c3b1ee6a7efe25a655140202e0fb1.bindTooltip(
+                `<div>
+                     龍谷大學大宮·西黌B2禁帶: 2 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9f3c3b1ee6a7efe25a655140202e0fb1.setIcon(icon_3433331242b6a1925e61ffed64aaeabb);
+            
+    
+            var marker_c5545ea1d462ee6414d2f208d77e594b = L.marker(
+                [34.8218, 135.5228],
+                {
+}
+            ).addTo(map_e4514abe362532767c457bd0f505e818);
+        
+    
+            var icon_35fc153df006ef7daa7e8baabbf2e7e2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "book",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_14b1ecf78691f52a6da8c85749ec5005 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_47312c69bf6be4993f8e952de6f87e74 = $(`<div id="html_47312c69bf6be4993f8e952de6f87e74" style="width: 100.0%; height: 100.0%;"><b>大阪大學外國圖1層書庫舊分類</b><br>🇯🇵 Japanese Library<br><b>1 books</b> preserved<br>From: 北京</div>`)[0];
+                popup_14b1ecf78691f52a6da8c85749ec5005.setContent(html_47312c69bf6be4993f8e952de6f87e74);
+            
+        
+
+        marker_c5545ea1d462ee6414d2f208d77e594b.bindPopup(popup_14b1ecf78691f52a6da8c85749ec5005)
+        ;
+
+        
+    
+    
+            marker_c5545ea1d462ee6414d2f208d77e594b.bindTooltip(
+                `<div>
+                     大阪大學外國圖1層書庫舊分類: 1 books
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c5545ea1d462ee6414d2f208d77e594b.setIcon(icon_35fc153df006ef7daa7e8baabbf2e7e2);
+            
+</script>
+</html>
