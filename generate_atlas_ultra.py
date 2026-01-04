@@ -185,9 +185,9 @@ def build_preface_network(df_excel):
     G = nx.DiGraph()
     
     for _, row in df_excel.iterrows():
-        book_author = row.get('著者/編者 Author/Editor', '')
-        book_title = row.get('題名 Title', '')
-        book_city = standardize_city(row.get('出版城市 City', ''))
+        book_author = row.get('著者/編者\n Author/Editor', '')
+        book_title = row.get('題名\n Title', '')
+        book_city = standardize_city(row.get('出版城市\n City', ''))
         
         if pd.notna(book_author) and book_author.strip():
             G.add_node(book_author, type='author', city=book_city, title=book_title)
@@ -281,7 +281,7 @@ def create_physical_book_analysis_map(df_excel, output_file='physical_books_map.
     m = folium.Map(location=[35, 110], zoom_start=4, tiles='CartoDB positron')
     
     for _, row in df_excel.iterrows():
-        city = standardize_city(row.get('出版城市 City', ''))
+        city = standardize_city(row.get('出版城市\n City', ''))
         if not city or city not in CITY_COORDINATES:
             continue
         
@@ -294,18 +294,25 @@ def create_physical_book_analysis_map(df_excel, output_file='physical_books_map.
         has_advert = row.get('Advert yes/no', '')
         num_prefaces = row.get('# of Pref', 0)
         
-        # Calculate size (radius)
-        size_metric = float(pages if pd.notna(pages) and pages > 0 else 
-                           folia if pd.notna(folia) and folia > 0 else 
-                           juan * 50 if pd.notna(juan) and juan > 0 else 50)
-        radius = min(max(size_metric / 10, 5), 30)
+        # Calculate size (radius) - handle string/numeric conversion
+        try:
+            pages_num = pd.to_numeric(pages, errors='coerce')
+            folia_num = pd.to_numeric(folia, errors='coerce')
+            juan_num = pd.to_numeric(juan, errors='coerce')
+            
+            size_metric = (pages_num if pd.notna(pages_num) and pages_num > 0 else 
+                          folia_num if pd.notna(folia_num) and folia_num > 0 else 
+                          juan_num * 50 if pd.notna(juan_num) and juan_num > 0 else 50)
+            radius = min(max(float(size_metric) / 10, 5), 30)
+        except:
+            radius = 10
         
         # Color by commercial vs scholarly
         is_commercial = str(has_advert).lower() in ['yes', 'y', '是']
         color = 'red' if is_commercial else 'blue'
         
-        title = row.get('題名 Title', 'Unknown')
-        author = row.get('著者/編者 Author/Editor', 'Unknown')
+        title = row.get('題名\n Title', 'Unknown')
+        author = row.get('著者/編者\n Author/Editor', 'Unknown')
         
         popup_html = f"""
         <b>{title}</b><br>
@@ -344,17 +351,20 @@ def create_collection_influence_map(df_excel, output_file='collection_influence_
     city_hdq = {}  # Huizu Diancang Quanshu
     
     for _, row in df_excel.iterrows():
-        city = standardize_city(row.get('出版城市 City', ''))
+        city = standardize_city(row.get('出版城市\n City', ''))
         if not city or city not in CITY_COORDINATES:
             continue
         
-        qd = str(row.get('清眞大典 Qingzhen Dadian', '無'))
-        hdq = str(row.get('回族典藏全書 Huizu Diancang Quanshu', '無'))
+        qd = str(row.get('清眞大典\n Qingzhen Dadian', '無'))
+        hdq = str(row.get('回族典藏全書\n Huizu Diancang Quanshu', '無'))
         
-        if qd != '無' and '無' not in qd:
+        if qd != '無' and '無' not in qd and pd.notna(qd):
             city_qd[city] = city_qd.get(city, 0) + 1
-        if hdq != '無' and '無' not in hdq:
+        if hdq != '無' and '無' not in hdq and pd.notna(hdq):
             city_hdq[city] = city_hdq.get(city, 0) + 1
+    
+    print(f"  Qingzhen Dadian: {sum(city_qd.values())} books in {len(city_qd)} cities")
+    print(f"  Huizu Diancang Quanshu: {sum(city_hdq.values())} books in {len(city_hdq)} cities")
     
     # Plot Qingzhen Dadian
     for city, count in city_qd.items():
@@ -398,7 +408,7 @@ def create_enhanced_main_map(df_main, df_excel, commentary, output_file='index_u
     excel_lookup = {}
     if df_excel is not None:
         for _, row in df_excel.iterrows():
-            title = row.get('題名 Title', '')
+            title = row.get('題名\n Title', '')
             if pd.notna(title):
                 excel_lookup[title] = row
     

@@ -17,7 +17,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_b9bae6589fbc8ee8d1869ff469dbe4b8 {
+                #map_f9eba4c6a72f7cbe79a4692ae1853c9b {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -54,14 +54,14 @@
 <body>
     
     
-            <div class="folium-map" id="map_b9bae6589fbc8ee8d1869ff469dbe4b8" ></div>
+            <div class="folium-map" id="map_f9eba4c6a72f7cbe79a4692ae1853c9b" ></div>
         
 </body>
 <script>
     
     
-            var map_b9bae6589fbc8ee8d1869ff469dbe4b8 = L.map(
-                "map_b9bae6589fbc8ee8d1869ff469dbe4b8",
+            var map_f9eba4c6a72f7cbe79a4692ae1853c9b = L.map(
+                "map_f9eba4c6a72f7cbe79a4692ae1853c9b",
                 {
                     center: [35.0, 110.0],
                     crs: L.CRS.EPSG3857,
@@ -78,7 +78,7 @@
 
         
     
-            var tile_layer_8c6ce30689a489cae5b276bdf7773d63 = L.tileLayer(
+            var tile_layer_a6e25a3025b203a1e5f1513538dd6f8d = L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
                 {
   "minZoom": 0,
@@ -95,7 +95,30 @@
             );
         
     
-            tile_layer_8c6ce30689a489cae5b276bdf7773d63.addTo(map_b9bae6589fbc8ee8d1869ff469dbe4b8);
+            tile_layer_a6e25a3025b203a1e5f1513538dd6f8d.addTo(map_f9eba4c6a72f7cbe79a4692ae1853c9b);
         
+    
+            var circle_marker_90ca083718820a1b7a9e095d77e8e67c = L.circleMarker(
+                [40.104200000000006, 116.6074],
+                {"bubblingMouseEvents": true, "color": "darkred", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_f9eba4c6a72f7cbe79a4692ae1853c9b);
+        
+    
+        var popup_63f833fa12892d82e35ef18ceb308db9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_610058818c3e842bfd69d8989e08f208 = $(`<div id="html_610058818c3e842bfd69d8989e08f208" style="width: 100.0%; height: 100.0%;"><b>北京</b><br>回族典藏全書: 2 books</div>`)[0];
+                popup_63f833fa12892d82e35ef18ceb308db9.setContent(html_610058818c3e842bfd69d8989e08f208);
+            
+        
+
+        circle_marker_90ca083718820a1b7a9e095d77e8e67c.bindPopup(popup_63f833fa12892d82e35ef18ceb308db9)
+        ;
+
+        
+    
 </script>
 </html>
