@@ -102,50 +102,50 @@
         }
         
         .viz-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e2e8f0 100%);
-            border: 1px solid #cbd5e0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
             border-radius: 8px;
-            padding: 1.5rem;
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
         }
         
         .viz-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
         
         .viz-card h3 {
-            color: #1a365d;
+            color: white;
             font-size: 1.3rem;
             margin-top: 0;
-            margin-bottom: 0.75rem;
         }
         
         .viz-card p {
-            color: #4a5568;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
+            color: rgba(255,255,255,0.9);
+            margin: 1rem 0;
+            line-height: 1.6;
         }
         
         .viz-card a {
-            display: inline-block;
-            background: #4299e1;
             color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 5px;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 4px;
             transition: background 0.3s;
         }
         
         .viz-card a:hover {
-            background: #2c5282;
+            background: rgba(255,255,255,0.3);
         }
         
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 1.5rem;
             margin: 2rem 0;
         }
@@ -188,12 +188,6 @@
         .insight-box p {
             color: #4a5568;
             line-height: 1.8;
-        }
-        
-        .reference {
-            font-style: italic;
-            color: #718096;
-            font-size: 0.9rem;
         }
         
         footer {
@@ -240,7 +234,6 @@
                 <li><a href="#visualizations">Visualizations</a></li>
                 <li><a href="#insights">Historical Insights</a></li>
                 <li><a href="#statistics">Key Statistics</a></li>
-                <li><a href="#references">References</a></li>
             </ul>
         </div>
     </nav>
@@ -282,121 +275,89 @@
         
         <section id="visualizations">
             <h2><span class="emoji">🗺️</span>Interactive Visualizations</h2>
-            <p>Explore our comprehensive suite of 10 interactive maps, each providing unique analytical perspectives on the geographical, temporal, and network dimensions of Chinese Islamic publishing history.</p>
+            <p>Explore our comprehensive suite of interactive maps, each providing unique analytical perspectives on the geographical, temporal, and network dimensions of Chinese Islamic publishing history. These visualizations serve as discovery tools, making these rare sources visible and accessible to scholars worldwide.</p>
             
             <div class="viz-grid">
                 <div class="viz-card">
-                    <h3>📍 Enhanced Overview Map</h3>
-                    <p>Comprehensive spatial distribution of all 185 geocoded books with detailed popups including titles, authors, publishers, and years.</p>
-                    <a href="index.html" target="_blank">View Map →</a>
-                </div>
-                
-                <div class="viz-card">
-                    <h3>⏰ Temporal Evolution (1863-1943)</h3>
-                    <p>Interactive time-lapse animation with slider showing publishing centers' shift from traditional to urban hubs during late Qing and Republican periods.</p>
-                    <a href="temporal_map.html" target="_blank">View Map →</a>
+                    <h3>📍 Comprehensive Chinese Islamic Books Atlas</h3>
+                    <p>The flagship comprehensive map integrating all available book metadata, scholarly commentary, and 58 metadata fields. Explore the complete collection with detailed popups including titles, authors, publishers, years, physical descriptions, and expert annotations.</p>
+                    <a href="comprehensive_atlas.html" target="_blank">Explore Atlas →</a>
                 </div>
                 
                 <div class="viz-card">
                     <h3>🎨 Regional Specialization</h3>
-                    <p>Thematic heatmap layers revealing intellectual geography: Beijing's periodical dominance vs. Yunnan/Sichuan's theological concentration.</p>
+                    <p>Thematic heatmap layers revealing intellectual geography: Beijing's periodical dominance versus Yunnan and Sichuan's theological concentration, illustrating how different regional centers specialized in distinct types of Islamic scholarship.</p>
                     <a href="thematic_map.html" target="_blank">View Map →</a>
                 </div>
                 
                 <div class="viz-card">
                     <h3>🏢 Publisher Distribution</h3>
-                    <p>Institutional analysis of 50 publishers mapped by output volume and longevity, highlighting 清眞書報社's dominant role (97 books).</p>
+                    <p>Institutional analysis of 50 publishers mapped by output volume and longevity, highlighting major publishing houses and their geographic distribution across Republican-era China.</p>
                     <a href="publisher_map.html" target="_blank">View Map →</a>
                 </div>
                 
                 <div class="viz-card">
                     <h3>🌏 China→Japan Migration Network</h3>
-                    <p>Knowledge transfer flows visualizing the "Book Road": 185 books traveling from 12 Chinese cities to 10 Japanese libraries, with Tenri University's 195-book collection.</p>
+                    <p>Knowledge transfer flows visualizing the "Book Road": 185 books traveling from 12 Chinese cities to 10 Japanese libraries, revealing patterns of scholarly collection and preservation during the 20th century.</p>
                     <a href="network_map.html" target="_blank">View Map →</a>
                 </div>
                 
                 <div class="viz-card">
-                    <h3>✨ Ultra-Enhanced Map</h3>
-                    <p>All 58 metadata fields integrated with embedded scholarly commentary from expert Word documents for 18 books.</p>
-                    <a href="index_ultra.html" target="_blank">View Map →</a>
-                </div>
-                
-                <div class="viz-card">
                     <h3>🤝 Preface Author Networks</h3>
-                    <p>Intellectual endorsement patterns revealing scholarly legitimation practices through preface-writing relationships (5 nodes, 4 edges).</p>
+                    <p>Intellectual endorsement patterns revealing scholarly legitimation practices through preface-writing relationships, showing how authors sought validation from established Islamic scholars.</p>
                     <a href="preface_network_map.html" target="_blank">View Map →</a>
                 </div>
                 
                 <div class="viz-card">
-                    <h3>📖 Physical Book Analysis</h3>
-                    <p>Publishing economics: book size, complexity, and commercial vs. scholarly production patterns by city and era.</p>
-                    <a href="physical_books_map.html" target="_blank">View Map →</a>
-                </div>
-                
-                <div class="viz-card">
-                    <h3>📚 Collection Influence</h3>
-                    <p>Anthology canonization: mapping the reach and impact of 清眞大典 (139 books) and 回族典藏全書 (182 books).</p>
-                    <a href="collection_influence_map.html" target="_blank">View Map →</a>
-                </div>
-                
-                <div class="viz-card">
                     <h3>🔄 Comprehensive Combined Map</h3>
-                    <p>All-in-one interface with toggle-able layers: book markers, category heatmaps, publisher circles, migration flows, and temporal evolution.</p>
+                    <p>All-in-one interface with toggle-able layers: book markers, category heatmaps, publisher circles, and migration flows. Switch between different analytical perspectives in a single interactive environment.</p>
                     <a href="all_in_one_map.html" target="_blank">View Map →</a>
                 </div>
             </div>
         </section>
         
         <section id="insights">
-            <h2><span class="emoji">🎓</span>Key Historical Insights</h2>
-            <p><em>Grounded in peer-reviewed scholarly research</em></p>
+            <h2><span class="emoji">🔍</span>Key Historical Insights</h2>
+            <p>These visualizations reveal significant patterns in the production, circulation, and preservation of Chinese Islamic texts. Understanding these patterns helps scholars recognize the importance of these sources and their availability for future research.</p>
             
             <div class="insight-box">
-                <h4>1. Publishing Concentration and Urban Modernization</h4>
-                <p>Beijing's dominance (120 books, 65% of total output) reflects Republican-era centralization patterns documented in Meng Yue's <em>Shanghai and the Edges of Empires</em> (2006). The institutional powerhouse 清眞書報社's output of 97 books exemplifies the concentrated publishing networks described in Christopher Reed's <em>Gutenberg in Shanghai: Chinese Print Capitalism, 1876-1937</em> (2004). This geographic concentration mirrors broader modernization trends analyzed in David Strand's <em>Rickshaw Beijing: City People and Politics in the 1920s</em> (1989), where traditional intellectual centers yielded to urban print capitalism.</p>
-                <p class="reference">References: Meng (2006), Reed (2004), Strand (1989)</p>
+                <h4>📍 Urban Concentration and Institutional Publishing</h4>
+                <p>The maps reveal Beijing's overwhelming dominance as the center of Chinese Islamic publishing, accounting for 65% of all books (120 out of 185 geocoded titles). This concentration reflects the Republican-era centralization of print culture and the establishment of dedicated Islamic publishing houses. The 清眞書報社 (Qingzhen Shibao She) alone published 97 books, representing nearly 40% of the entire corpus. This institutional dominance transformed Islamic book production from scattered individual efforts into organized, systematic publishing operations. The visualization helps scholars identify major publishing centers and understand where to locate related archival materials.</p>
             </div>
             
             <div class="insight-box">
-                <h4>2. Sino-Japanese Academic Exchange and Preservation Patterns</h4>
-                <p>The remarkable finding that 95% of books (234/246) are preserved in Japanese institutions reflects systematic knowledge acquisition patterns documented in Joshua Fogel's <em>The Role of Japan in Modern Chinese Art</em> (2012). Tenri University's collection of 195 books (79% of Japanese holdings) demonstrates institutional collecting strategies aligned with Japanese sinological traditions. These migration flows correspond to East Asian knowledge networks described in Lydia Liu's <em>Translingual Practice: Literature, National Culture, and Translated Modernity—China, 1900-1937</em> (1995), revealing how Chinese Islamic texts became embedded in Japanese academic infrastructure during the colonial period.</p>
-                <p class="reference">References: Fogel (2012), Liu (1995), Saaler (2005)</p>
+                <h4>🌏 The "Book Road": Sino-Japanese Knowledge Networks</h4>
+                <p>Perhaps the most striking pattern revealed by these visualizations is the migration of Chinese Islamic books to Japan. A remarkable 95% of the cataloged books are now preserved in Japanese institutions, with Tenri University holding 195 books (79% of the entire collection). This migration represents a critical chapter in East Asian intellectual history, showing how Japanese scholars and institutions systematically acquired Chinese Islamic texts during the Republican period. The network map visualization traces these flows, revealing not just preservation patterns but also scholarly interest and collecting practices that spanned national boundaries. For researchers, this means that accessing these sources requires engagement with Japanese institutional repositories, and the visualizations serve as a guide to these collections.</p>
             </div>
             
             <div class="insight-box">
-                <h4>3. Regional Intellectual Geography and Specialization</h4>
-                <p>Beijing's specialization in newspapers and periodicals reflects the urban print culture analyzed in Rudolf G. Wagner's <em>The Contemporary Chinese Historical Drama: Four Studies</em> (1990). Conversely, Yunnan and Sichuan's concentration in theological manuscripts demonstrates provincial scholarly networks documented in Jonathan Lipman's <em>Familiar Strangers: A History of Muslims in Northwest China</em> (1997). These geographic specialization patterns are consistent with the broader regional intellectual divisions described in Susan Naquin and Evelyn S. Rawski's <em>Chinese Society in the Eighteenth Century</em> (1987), suggesting continuity from late imperial to Republican periods.</p>
-                <p class="reference">References: Wagner (1990), Lipman (1997), Naquin & Rawski (1987)</p>
+                <h4>🎨 Regional Intellectual Specialization</h4>
+                <p>The thematic heatmaps reveal distinct patterns of regional specialization in Islamic scholarship. Beijing dominated periodical production, reflecting its role as a center of modern print media and intellectual discourse. In contrast, Yunnan and Sichuan provinces show higher concentrations of theological works, indicating the persistence of traditional Islamic learning in these regions with significant Muslim populations. This geographic differentiation suggests that Islamic intellectual production was not monolithic but adapted to local contexts, audiences, and scholarly traditions. These patterns help researchers understand where to look for different types of Islamic texts and scholarship.</p>
             </div>
             
             <div class="insight-box">
-                <h4>4. Print Culture, Book Production, and Knowledge Migration</h4>
-                <p>The high co-location network density (0.172) indicates a concentrated publishing ecosystem described in Cynthia Brokaw and Kai-wing Chow's <em>Printing and Book Culture in Late Imperial China</em> (2005). Publisher longevity patterns reflect commercial dynamics analyzed in Reed's studies of Chinese print capitalism. Physical book characteristics—including binding methods, page counts, and juan divisions—align with traditional production methods documented in Tsien Tsuen-hsuin's <em>Science and Civilisation in China, Vol. 5: Chemistry and Chemical Technology, Part 1: Paper and Printing</em> (1985), showing technological continuity despite modernizing pressures.</p>
-                <p class="reference">References: Brokaw & Chow (2005), Reed (2004), Tsien (1985)</p>
+                <h4>⏰ Temporal Dynamics and Historical Transitions</h4>
+                <p>The 80-year publishing span (1863-1943) captured in these visualizations encompasses crucial transformations in Chinese history: the late Qing reforms, the Republican revolution, warlord period, and Japanese invasion. The temporal patterns show increased publishing activity during the Republican era, reflecting literacy campaigns, print technology improvements, and the flourishing of diverse intellectual movements. However, the abrupt end in 1943 marks the disruption caused by wartime conditions. Understanding these temporal dynamics helps scholars contextualize individual works within broader historical trajectories and recognize gaps in the publication record that may reflect political or social constraints.</p>
             </div>
             
             <div class="insight-box">
-                <h4>5. Intellectual Networks and Scholarly Legitimation</h4>
-                <p>Preface author networks demonstrate scholarly legitimation practices described in Benjamin Elman's <em>A Cultural History of Civil Examinations in Late Imperial China</em> (2000). These endorsement patterns reflect social capital mechanisms analyzed through Pierre Bourdieu's field theory, where preface-writing functioned as intellectual gatekeeping. Cross-regional intellectual connections documented in Peter K. Bol's <em>Neo-Confucianism in History</em> (2008) find parallels in Islamic scholarly networks, suggesting common patterns of knowledge validation across Chinese intellectual traditions.</p>
-                <p class="reference">References: Elman (2000), Bourdieu (1986), Bol (2008)</p>
+                <h4>🤝 Intellectual Networks and Scholarly Legitimation</h4>
+                <p>The preface author network visualization reveals patterns of scholarly endorsement and intellectual authority within Chinese Islamic communities. Prefaces were not mere formalities but crucial mechanisms for establishing a book's legitimacy and connecting it to recognized scholarly lineages. The network maps show which scholars served as intellectual gatekeepers, lending their authority to new works. These patterns illuminate the social structures of Islamic scholarship in Republican China and help researchers trace intellectual genealogies and scholarly relationships that might not be obvious from the texts alone.</p>
             </div>
             
             <div class="insight-box">
-                <h4>6. Anthology Formation, Collection Building, and Canonization</h4>
-                <p>The influence of major anthologies—清眞大典 (139 books across 28 volumes) and 回族典藏全書 (182 books across 55 volumes)—reflects canonization processes similar to those described in Chinese literary traditions. Library holdings distribution, particularly the concentration in Japanese institutions, demonstrates colonial knowledge acquisition patterns documented in Sven Saaler's <em>Politics, Memory and Public Opinion: The History Textbook Controversy and Japanese Society</em> (2005). This institutional collection formation aligns with broader patterns of East Asian library development described in Asian library studies.</p>
-                <p class="reference">References: Saaler (2005), Brokaw & Chow (2005)</p>
+                <h4>📚 Making Rare Sources Discoverable</h4>
+                <p>A primary goal of these visualizations is to make these rare books known to the broader scholarly community. Many of these texts are difficult to access, housed in Japanese repositories, and not widely cataloged in Western library systems. By mapping their locations, content types, publication patterns, and preservation institutions, these visualizations serve as a discovery tool. Researchers studying Chinese Islam, Republican-era print culture, Sino-Japanese intellectual exchanges, or Muslim minority communities can use these maps to identify relevant sources for their work. The comprehensive metadata integration means scholars can quickly assess which books might be relevant to their research questions without needing to physically visit multiple repositories.</p>
             </div>
             
             <div class="insight-box">
-                <h4>7. Temporal Dynamics and Modernization Trajectories (1863-1943)</h4>
-                <p>The 80-year span encompasses the late Qing reform period through the Republican era, a transformative period in Chinese intellectual history. Publishing acceleration during the Republic era reflects literacy campaigns and print expansion documented in Peter Zarrow's <em>China in War and Revolution, 1895-1949</em> (2005). The temporal shift from traditional centers to urban hubs mirrors the broader Chinese modernization chronology, showing how Islamic publishing participated in national print culture transformation despite its minority religious context.</p>
-                <p class="reference">References: Zarrow (2005), Strand (1989), Reed (2004)</p>
+                <h4>🔬 Methodological Innovation for Digital Humanities</h4>
+                <p>These visualizations demonstrate how GIS and network analysis tools can transform our understanding of book history and intellectual networks. By spatializing bibliographic data, temporal patterns, and institutional connections become visible that would be difficult to perceive from traditional catalog listings. The multi-layered approach—combining spatial distribution, temporal evolution, thematic categorization, publisher networks, and migration flows—allows scholars to ask new questions about how knowledge circulated in early 20th-century China. This methodology can be applied to other collections, opening new research directions in Asian book history and transnational knowledge circulation.</p>
             </div>
             
             <div class="insight-box">
-                <h4>8. OCR-Validated Primary Source Integration</h4>
-                <p>The extraction of 16,809 characters from the Tenri University catalog via multi-language OCR (Japanese, Chinese, English) provides primary source validation for our dataset. This bibliographic metadata confirms institutional preservation patterns and enables scholarly verification of holdings. The cross-reference capabilities between extracted catalog data and our database demonstrate the potential of digital humanities methods for recovering and analyzing historical book collections, particularly those held in foreign repositories.</p>
-                <p class="reference">Technical implementation: Tesseract OCR, 300 DPI resolution, multi-language processing</p>
+                <h4>🌍 Implications for Future Research</h4>
+                <p>These visualizations open multiple research directions. Scholars can investigate why specific Japanese institutions collected these materials, trace the circulation networks that moved books from China to Japan, examine the relationship between publishing locations and content types, or study how Islamic intellectual production responded to China's tumultuous Republican period. The maps also reveal gaps—regions with few publications, time periods with limited output, and types of works that may be underrepresented. Identifying these gaps helps focus future collection efforts and research questions. Most importantly, by making these sources visible and their locations known, these visualizations enable the next generation of scholarship on Chinese Islamic intellectual history.</p>
             </div>
         </section>
         
@@ -404,71 +365,55 @@
             <h2><span class="emoji">📊</span>Key Statistics</h2>
             
             <h3>Data Coverage</h3>
-            <ul style="margin-left: 2rem; line-height: 2;">
-                <li><strong>247 total books</strong> from main bibliographic dataset</li>
-                <li><strong>185 books geocoded</strong> (75% spatial coverage)</li>
-                <li><strong>144 books with temporal data</strong> (58% temporal coverage, 1863-1943)</li>
-                <li><strong>78 expert-curated books</strong> with 58 metadata fields from Excel sources</li>
-                <li><strong>18 books</strong> with detailed scholarly commentary (~12,000 characters)</li>
-                <li><strong>16,809 characters</strong> extracted from PDF catalog via OCR</li>
-                <li><strong>195 books at Tenri University</strong> validated with comprehensive metadata</li>
+            <ul>
+                <li><strong>247 total books</strong> from comprehensive bibliographic survey</li>
+                <li><strong>185 geocoded books</strong> (75%) with verified publishing locations</li>
+                <li><strong>144 books with temporal data</strong> (58%) spanning 1863-1943</li>
+                <li><strong>78 expert-curated books</strong> with 58 detailed metadata fields</li>
+                <li><strong>18 books with scholarly commentary</strong> (~12,000 characters)</li>
+                <li><strong>16,809 characters extracted</strong> from Tenri University PDF catalog via OCR</li>
             </ul>
             
             <h3>Geographic Distribution</h3>
-            <ul style="margin-left: 2rem; line-height: 2;">
-                <li><strong>12 Chinese publishing cities</strong> identified and geocoded</li>
-                <li><strong>10 Japanese libraries</strong> holding collections (95% of total books)</li>
-                <li><strong>Beijing dominance:</strong> 120 books (65% of total)</li>
-                <li><strong>Top publisher:</strong> 清眞書報社 (97 books)</li>
+            <ul>
+                <li><strong>12 Chinese publishing cities</strong> identified</li>
+                <li><strong>Beijing dominance:</strong> 120 books (65% of geocoded collection)</li>
+                <li><strong>10 Japanese preservation libraries</strong> currently holding books</li>
+                <li><strong>95% Japanese preservation rate</strong> of total collection</li>
+                <li><strong>Tenri University:</strong> 195 books (79% of collection)</li>
             </ul>
             
-            <h3>Network Analysis</h3>
-            <ul style="margin-left: 2rem; line-height: 2;">
-                <li><strong>50 publishers analyzed</strong> across Chinese cities</li>
-                <li><strong>48 publisher nodes, 194 edges</strong> in co-location network</li>
-                <li><strong>Network density: 0.172</strong> indicating concentrated ecosystem</li>
-                <li><strong>5 preface author networks</strong> identified (5 nodes, 4 edges)</li>
+            <h3>Publishing & Networks</h3>
+            <ul>
+                <li><strong>50 distinct publishers</strong> identified and mapped</li>
+                <li><strong>清眞書報社 output:</strong> 97 books (largest single publisher)</li>
+                <li><strong>Network analysis:</strong> 48 publisher nodes, 194 edges</li>
+                <li><strong>Network density:</strong> 0.172 (indicating concentrated publishing ecosystem)</li>
+                <li><strong>Preface networks:</strong> 37 author nodes, 4 documented relationships</li>
             </ul>
             
-            <h3>Collection Impact</h3>
-            <ul style="margin-left: 2rem; line-height: 2;">
-                <li><strong>清眞大典:</strong> 139 books across 28 volumes</li>
-                <li><strong>回族典藏全書:</strong> 182 books across 55 volumes</li>
-                <li><strong>Tenri University:</strong> 195 books (79% of Japanese holdings)</li>
-                <li><strong>Osaka University:</strong> 37 books (15% of Japanese holdings)</li>
-                <li><strong>Ryukoku University:</strong> 8 books</li>
+            <h3>Thematic Categories</h3>
+            <ul>
+                <li><strong>Theology:</strong> 109 books (44% of collection)</li>
+                <li><strong>General works:</strong> 62 books (25%)</li>
+                <li><strong>Language & linguistics:</strong> 13 books (5%)</li>
+                <li><strong>History:</strong> 1 book (0.4%)</li>
             </ul>
-        </section>
-        
-        <section id="references">
-            <h2><span class="emoji">📖</span>Scholarly References</h2>
-            <p>All historical insights are grounded in peer-reviewed academic research:</p>
             
-            <ul style="margin-left: 2rem; line-height: 2;">
-                <li>Bol, Peter K. <em>Neo-Confucianism in History</em>. Cambridge: Harvard University Asia Center, 2008.</li>
-                <li>Bourdieu, Pierre. "The Forms of Capital." In <em>Handbook of Theory and Research for the Sociology of Education</em>, edited by J. Richardson, 241-258. New York: Greenwood, 1986.</li>
-                <li>Brokaw, Cynthia J., and Kai-wing Chow, eds. <em>Printing and Book Culture in Late Imperial China</em>. Berkeley: University of California Press, 2005.</li>
-                <li>Elman, Benjamin A. <em>A Cultural History of Civil Examinations in Late Imperial China</em>. Berkeley: University of California Press, 2000.</li>
-                <li>Fogel, Joshua A. <em>The Role of Japan in Modern Chinese Art</em>. Berkeley: University of California Press, 2012.</li>
-                <li>Lipman, Jonathan N. <em>Familiar Strangers: A History of Muslims in Northwest China</em>. Seattle: University of Washington Press, 1997.</li>
-                <li>Liu, Lydia H. <em>Translingual Practice: Literature, National Culture, and Translated Modernity—China, 1900-1937</em>. Stanford: Stanford University Press, 1995.</li>
-                <li>Meng, Yue. <em>Shanghai and the Edges of Empires</em>. Minneapolis: University of Minnesota Press, 2006.</li>
-                <li>Naquin, Susan, and Evelyn S. Rawski. <em>Chinese Society in the Eighteenth Century</em>. New Haven: Yale University Press, 1987.</li>
-                <li>Reed, Christopher A. <em>Gutenberg in Shanghai: Chinese Print Capitalism, 1876-1937</em>. Honolulu: University of Hawaiʻi Press, 2004.</li>
-                <li>Saaler, Sven. <em>Politics, Memory and Public Opinion: The History Textbook Controversy and Japanese Society</em>. Munich: Iudicium Verlag, 2005.</li>
-                <li>Strand, David. <em>Rickshaw Beijing: City People and Politics in the 1920s</em>. Berkeley: University of California Press, 1989.</li>
-                <li>Tsien, Tsuen-hsuin. <em>Science and Civilisation in China, Vol. 5: Chemistry and Chemical Technology, Part 1: Paper and Printing</em>. Cambridge: Cambridge University Press, 1985.</li>
-                <li>Wagner, Rudolf G. <em>The Contemporary Chinese Historical Drama: Four Studies</em>. Berkeley: University of California Press, 1990.</li>
-                <li>Zarrow, Peter. <em>China in War and Revolution, 1895-1949</em>. London: Routledge, 2005.</li>
+            <h3>Data Sources Utilized</h3>
+            <ul>
+                <li><strong>Main CSV:</strong> 247 books, 23 metadata columns</li>
+                <li><strong>Excel files:</strong> 78 books with 58 enriched fields (Hai Peng & Rian Thum)</li>
+                <li><strong>Word documents:</strong> Expert annotations and commentary</li>
+                <li><strong>PDF catalog:</strong> Tenri University holdings via OCR extraction</li>
             </ul>
         </section>
     </div>
     
     <footer>
         <div class="container">
-            <p><strong>Interactive Digital Atlas - Islamic Books in Chinese</strong></p>
-            <p>A comprehensive digital humanities project analyzing publishing locations, temporal evolution, and preservation patterns (1863-1943)</p>
-            <p style="margin-top: 1rem; opacity: 0.8;">All data sources fully utilized | Complete English support | Scholarly insights grounded in peer-reviewed research</p>
+            <p>&copy; 2024 Interactive Digital Atlas Project | Islamic Books in Chinese (1863-1943)</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Spatiotemporal Analysis | Network Visualization | Digital Humanities Research</p>
         </div>
     </footer>
 </body>
